@@ -69,6 +69,8 @@ Contoh berikut memperlihatkan struktur designer GPT-6 Sol Medium dan tampilan ap
 
 ### Seluruh percobaan
 
+Percobaan model dalam pengujian ini dijalankan secara serentak. Ketika penulis menguji ulang **GPT-6 Sol Light** dan **GPT-5.6 Terra High** satu per satu, hasil keduanya lebih baik daripada hasil percobaan serentak. Ada kemungkinan agent saling berbenturan saat mengakses file yang sama, tetapi penyebabnya belum dipastikan. Anggap screenshot dan perbandingan berikut sebagai catatan dari percobaan tersebut, bukan peringkat model yang sepenuhnya akurat. Anda dapat menguji ulang secara berurutan dengan model yang biasa digunakan.
+
 Arsip desktop berisi 10 screenshot designer, 10 screenshot run awal, dan 8 screenshot run setelah perapian. Delapan hasil GPT yang dirapikan menggunakan GPT-6 Sol High. Hasil DeepSeek adalah **pure DeepSeek dengan harness Codex**; keduanya tidak memiliki gambar hasil perapian oleh GPT.
 
 | Percobaan | Durasi tercatat | Struktur designer | Run awal | Setelah dirapikan |
@@ -121,6 +123,8 @@ Biaya GPT yang tepat tidak dicatat. Berdasarkan persentase penggunaan Pro 5x, pe
 - **Struktur designer:** Hierarki komponen yang dihasilkan relatif mirip antarpercobaan.
 
 Pilih **GPT-6 Astra Light → GPT-6 Sol High** jika kualitas visual menjadi prioritas utama. Pilih **GPT-6 Sol Medium → GPT-6 Sol High** untuk keseimbangan biaya dan hasil yang paling baik menurut penulis. **DeepSeek V4 Pro High** juga layak dipertimbangkan di luar peak hours jika biayanya turun sesuai perkiraan.
+
+Pilihan tersebut mencerminkan hasil percobaan serentak yang didokumentasikan di sini dan dapat berubah setelah pengujian ulang secara berurutan.
 
 ## Struktur repository
 

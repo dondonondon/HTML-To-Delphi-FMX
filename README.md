@@ -69,6 +69,8 @@ The following example shows the GPT-6 Sol Medium designer structure and applicat
 
 ### All attempts
 
+The model attempts in this experiment were run concurrently. When the author later retested **GPT-6 Sol Light** and **GPT-5.6 Terra High** one model at a time, both produced better results than in the concurrent runs. The agents may have conflicted while accessing the same files, but this has not been confirmed. Treat the screenshots and comparisons as records of those particular runs, not a fully reliable model ranking. You can retest sequentially with the models you normally use.
+
 The desktop archive contains 10 designer captures, 10 initial run captures, and 8 run captures after refinement. The eight refined GPT results used GPT-6 Sol High. The DeepSeek results are **pure DeepSeek with a Codex harness**; neither has a GPT refinement image.
 
 | Attempt | Time noted | Designer structure | Initial run | After refinement |
@@ -121,6 +123,8 @@ Exact GPT charges were not recorded. Based on Pro 5x usage percentages, the auth
 - **Designer structure:** The resulting component hierarchies were relatively similar across attempts.
 
 Choose **GPT-6 Astra Light → GPT-6 Sol High** when visual quality matters most. Choose **GPT-6 Sol Medium → GPT-6 Sol High** for the author's preferred price to result balance. **DeepSeek V4 Pro High** is also worth considering outside peak hours if its cost falls as expected.
+
+These preferences reflect the concurrent runs documented here and may change with sequential retesting.
 
 ## Repository layout
 
