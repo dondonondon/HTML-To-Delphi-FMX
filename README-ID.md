@@ -21,6 +21,10 @@ Repository ini berisi instruksi skill dan dokumentasi percobaan dashboard. Skill
 
 `html-to-fmx` menjalankan alur mapping dan styling dari dua skill lainnya. Simpan **ketiga folder skill bersama**. Struktur visual yang tetap dibuat di resource `.fmx` pada design time; record yang jumlahnya berubah menggunakan card `TFrame` reusable di dalam `TListBoxItem`.
 
+## Kelebihan menggunakan skill ini
+
+Konversi HTML ke FMX secara langsung dapat mengubah banyak elemen pembungkus HTML menjadi lapisan container FMX yang bertumpuk. Skill ini memetakan halaman menjadi section dan card yang bermakna, lalu menambahkan container hanya jika diperlukan untuk layout, pengelompokan, atau fungsi yang jelas. Hasilnya, hierarki komponen lebih ringkas dan lebih mudah diperiksa serta diedit di designer RAD Studio, tanpa menghilangkan batas section dan card yang memang dibutuhkan UI.
+
 ## Mulai menggunakan
 
 Codex mencari skill repository di `.agents/skills` dari direktori kerja sampai root repository. Buka repo ini di Codex untuk melihat skill, atau salin ketiga folder skill ke `.agents/skills/` pada project Delphi tujuan. Lihat [dokumentasi resmi skill Codex](https://learn.chatgpt.com/docs/build-skills).

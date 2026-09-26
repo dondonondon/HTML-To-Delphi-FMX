@@ -21,6 +21,10 @@ This repository contains skill instructions and a documented dashboard experimen
 
 `html-to-fmx` runs the mapping and styling workflows as sibling dependencies. Keep **all three skill directories together**. Fixed visual structure belongs in design-time `.fmx` resources; variable records use reusable `TFrame` cards inside `TListBoxItem` instances.
 
+## Why use these skills?
+
+A direct HTML-to-FMX conversion can turn HTML wrapper elements into many layers of FMX containers. These skills map the page into meaningful sections and cards, then add a container only when it serves a layout, grouping, or other concrete purpose. The result is a shallower component hierarchy that is easier to inspect and edit in the RAD Studio designer, while preserving the sections and cards the UI needs.
+
 ## Getting started
 
 Codex discovers repository skills in `.agents/skills` from the working directory up to the repository root. Open this repository in Codex to inspect the skills, or copy the three directories into the `.agents/skills/` folder of the Delphi project where you will use them. See the [official Codex skill documentation](https://learn.chatgpt.com/docs/build-skills).
