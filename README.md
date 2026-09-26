@@ -62,6 +62,8 @@ The archive contains RAD Studio Structure/designer captures, initial application
 | DeepSeek V4 Pro High | 36m 29s | [View](docs/result/image-design-time/SSDT-Deepseek-V4-Pro%20High.png) | [View](docs/result/image-run/before-enhance/SS-Deepseek-v4-Pro%20High.png) | Pure DeepSeek; no refinement image |
 | DeepSeek V4.1 Flash High | 24m 30s | [View](docs/result/image-design-time/SSDT-Deepseek-V4.1-Flash%20High.png) | [View](docs/result/image-run/before-enhance/SS-Deepseek-v4.1-Flash%20High.png) | Pure DeepSeek; no refinement image |
 
+**Cost notes from these attempts:** DeepSeek V4.1 Flash High cost **US$0.34** and DeepSeek V4 Pro High cost **US$1.74** during peak hours. Exact GPT costs were not recorded. Based on Pro 5x usage percentages, the Astra attempts were estimated at about **US$1** and the other GPT attempts at **under US$1**. The GPT figures are rough estimates, not measured per-run charges or a controlled cost comparison.
+
 Example from the GPT-6 Sol Medium attempt:
 
 | Designer structure | Initial run | Run after GPT-6 Sol High refinement |

@@ -63,6 +63,8 @@ Arsip hasil berisi screenshot Structure/designer RAD Studio, tampilan awal aplik
 | DeepSeek V4 Pro High | 36m 29s | [Lihat](docs/result/image-design-time/SSDT-Deepseek-V4-Pro%20High.png) | [Lihat](docs/result/image-run/before-enhance/SS-Deepseek-v4-Pro%20High.png) | Pure DeepSeek; tidak ada gambar hasil perapian |
 | DeepSeek V4.1 Flash High | 24m 30s | [Lihat](docs/result/image-design-time/SSDT-Deepseek-V4.1-Flash%20High.png) | [Lihat](docs/result/image-run/before-enhance/SS-Deepseek-v4.1-Flash%20High.png) | Pure DeepSeek; tidak ada gambar hasil perapian |
 
+**Catatan biaya percobaan:** DeepSeek V4.1 Flash High menghabiskan **US$0.34** dan DeepSeek V4 Pro High **US$1.74** saat peak hours. Biaya GPT per percobaan tidak dicatat secara pasti. Berdasarkan persentase penggunaan Pro 5x, percobaan Astra diperkirakan sekitar **US$1**, sedangkan percobaan GPT lainnya **di bawah US$1**. Angka GPT adalah perkiraan kasar, bukan biaya per percobaan yang terukur atau perbandingan biaya yang terkontrol.
+
 Contoh dari percobaan GPT-6 Sol Medium:
 
 | Struktur designer | Run awal | Run setelah dirapikan GPT-6 Sol High |
