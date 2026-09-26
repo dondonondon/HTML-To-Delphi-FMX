@@ -47,9 +47,13 @@ Build and inspect the result when the target toolchain is available.
 
 See [PROMPTS.md](PROMPTS.md) for focused prompts covering mapping, styling, full conversion, and refinement. Output paths in these examples belong to the **target project**, not to this skill repository.
 
+## Icons and native FMX scope
+
+The icons in the source HTML are sufficient as a starting point. For a better fit, choose or source icons that suit your own application's visual style. If your Delphi project already uses Skia, you can also replace them with SVG icons through that integration. This repository's target is **pure Delphi FMX**: the conversion workflow should work with native FMX components and should not require Skia.
+
 ## Dashboard experiment
 
-The test input is a NovaPOS dashboard page in [`docs/ui-dashboard.html`](docs/ui-dashboard.html). This is the browser reference:
+The NovaPOS dashboard UI was generated with **Google Stitch** and exported as HTML code. The exported test input is [`docs/ui-dashboard.html`](docs/ui-dashboard.html). This is its browser reference:
 
 <img src="docs/result/UI-HTML.png" width="320" alt="NovaPOS dashboard rendered from the source HTML in a browser">
 

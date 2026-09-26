@@ -47,9 +47,13 @@ yang jumlahnya berubah. Build dan periksa hasil jika toolchain tersedia.
 
 [PROMPTS.md](PROMPTS.md) menyediakan prompt bahasa Inggris untuk mapping, styling, konversi penuh, dan perapian. Path output dalam contoh tersebut berada di **project tujuan**, bukan dalam repository skill ini.
 
+## Ikon dan cakupan FMX native
+
+Ikon dari HTML sumber sudah cukup sebagai titik awal. Agar lebih sesuai dengan tampilan aplikasi Anda, saya menyarankan memilih atau mencari ikon sendiri. Jika project Delphi Anda sudah menggunakan Skia, ikon juga dapat diganti dengan SVG melalui integrasi tersebut. Target repository ini adalah **pure Delphi FMX**: alur konversinya menggunakan komponen FMX native dan tidak mensyaratkan Skia.
+
 ## Percobaan dashboard
 
-Input pengujian adalah halaman dashboard NovaPOS dalam [`docs/ui-dashboard.html`](docs/ui-dashboard.html). Berikut tampilan acuannya di browser:
+UI dashboard NovaPOS dibuat menggunakan **Google Stitch**, lalu diekspor menjadi kode HTML. Hasil ekspor yang digunakan sebagai input pengujian adalah [`docs/ui-dashboard.html`](docs/ui-dashboard.html). Berikut tampilan acuannya di browser:
 
 <img src="docs/result/UI-HTML.png" width="320" alt="Dashboard NovaPOS dari source HTML saat dibuka di browser">
 
