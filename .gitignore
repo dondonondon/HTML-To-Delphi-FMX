@@ -1,0 +1,25 @@
+# Local environments and generated work
+/.venv/
+/project/
+/projects/
+/frames-reference-temporary/
+/tools/
+/_tmp*
+
+# Superseded local packaging; .agents/skills is the public source.
+/.codex/
+/Install-FmxSkills.ps1
+/fmx-codex-skills-*.zip
+/SHA256SUMS.txt
+/VALIDATION.md
+
+# Local conversion output and private experiment notes
+/docs/ui/
+/docs/result/rangkuman.md
+
+# Editor and OS artifacts
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.bak
+*.tmp

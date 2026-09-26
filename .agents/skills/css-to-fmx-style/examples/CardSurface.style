@@ -1,0 +1,13 @@
+object TLayout
+  object TRectangle
+    StyleName = 'app_panel_card'
+    Width = 320.000000000000000000
+    Height = 112.000000000000000000
+    HitTest = False
+    Fill.Color = xFFFFFFFF
+    Stroke.Color = xFFE2E8F0
+    Stroke.Thickness = 1.000000000000000000
+    XRadius = 12.000000000000000000
+    YRadius = 12.000000000000000000
+  end
+end

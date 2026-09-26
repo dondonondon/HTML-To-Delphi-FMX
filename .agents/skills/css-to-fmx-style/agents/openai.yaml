@@ -1,0 +1,6 @@
+interface:
+  display_name: "CSS to Delphi FMX Style"
+  short_description: "Convert CSS to FMX styles and component mappings"
+  default_prompt: "Use $css-to-fmx-style to convert the supplied CSS into Delphi FMX .style resources and update FMX_STYLE_MAPPING.md. Reuse compatible styles and report validation limits."
+policy:
+  allow_implicit_invocation: true

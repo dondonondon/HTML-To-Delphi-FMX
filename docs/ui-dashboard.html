@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Home Dashboard - NovaPOS Mobile</title>
+<!-- Inter Font Family -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary-fixed-variant": "#003ea8",
+            "inverse-primary": "#b4c5ff",
+            "error": "#ba1a1a",
+            "on-secondary-container": "#663500",
+            "on-primary-container": "#eeefff",
+            "primary-fixed": "#dbe1ff",
+            "surface-bright": "#faf8ff",
+            "on-secondary": "#ffffff",
+            "tertiary": "#88411a",
+            "secondary-container": "#fe932c",
+            "tertiary-container": "#a65830",
+            "on-error": "#ffffff",
+            "surface-container": "#eaedff",
+            "background": "#faf8ff",
+            "error-container": "#ffdad6",
+            "surface-variant": "#dae2fd",
+            "surface": "#faf8ff",
+            "surface-tint": "#0053db",
+            "surface-container-high": "#e2e7ff",
+            "on-tertiary-fixed-variant": "#76330d",
+            "inverse-on-surface": "#eef0ff",
+            "on-primary-fixed": "#00174b",
+            "secondary-fixed": "#ffdcc3",
+            "tertiary-fixed-dim": "#ffb693",
+            "surface-dim": "#d2d9f4",
+            "on-surface": "#131b2e",
+            "on-secondary-fixed-variant": "#6e3900",
+            "primary": "#004ac6",
+            "on-tertiary": "#ffffff",
+            "on-primary": "#ffffff",
+            "outline": "#737686",
+            "primary-container": "#2563eb",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#f2f3ff",
+            "secondary": "#904d00",
+            "on-tertiary-container": "#ffede6",
+            "on-surface-variant": "#434655",
+            "surface-container-highest": "#dae2fd",
+            "primary-fixed-dim": "#b4c5ff",
+            "on-secondary-fixed": "#2f1500",
+            "inverse-surface": "#283044",
+            "secondary-fixed-dim": "#ffb77d",
+            "outline-variant": "#c3c6d7",
+            "on-tertiary-fixed": "#351000",
+            "on-background": "#131b2e",
+            "tertiary-fixed": "#ffdbcc",
+            "on-error-container": "#93000a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "space-md": "0.75rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1rem",
+            "space-xl": "1.5rem",
+            "margin": "1rem",
+            "gutter": "0.75rem"
+          },
+          "fontFamily": {
+            "headline-md": ["Inter"],
+            "label-md": ["Inter"],
+            "headline-lg-mobile": ["Inter"],
+            "label-lg": ["Inter"],
+            "headline-sm": ["Inter"],
+            "body-lg": ["Inter"],
+            "title-md": ["Inter"],
+            "title-sm": ["Inter"],
+            "headline-lg": ["Inter"],
+            "body-md": ["Inter"],
+            "label-sm": ["Inter"],
+            "body-sm": ["Inter"]
+          },
+          "fontSize": {
+            "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+            "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+            "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "headline-sm": ["18px", { "lineHeight": "26px", "fontWeight": "600" }],
+            "body-lg": ["15px", { "lineHeight": "22px", "fontWeight": "400" }],
+            "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "title-sm": ["15px", { "lineHeight": "22px", "fontWeight": "500" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "500" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Inter', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined.fill {
+      font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-[#F8FAFC] text-[#0F172A] antialiased min-h-screen flex justify-center">
+<!-- Mobile Container Envelope (390px - 430px) -->
+<div class="w-full max-w-[430px] min-h-screen bg-[#F8FAFC] flex flex-col relative">
+<!-- 1. FIXED TOP APP BAR (Shared Component Anchor) -->
+<header class="fixed top-0 left-0 w-full max-w-[430px] mx-auto right-0 h-16 z-50 bg-surface-container-lowest border-b border-[#E2E8F0] px-4 flex items-center justify-between">
+<!-- Leading Identity Cluster -->
+<div class="flex items-center space-x-2.5">
+<div class="w-9 h-9 rounded-lg bg-primary-container text-white flex items-center justify-center font-bold text-lg">
+<span class="material-symbols-outlined text-[20px]" data-icon="storefront">storefront</span>
+</div>
+<div>
+<div class="flex items-center space-x-1">
+<span class="font-headline-sm text-title-md font-bold text-[#0F172A] tracking-tight">NovaPOS</span>
+</div>
+<!-- Branch Selector Pill -->
+<button class="flex items-center space-x-1 text-[#64748B] hover:text-[#0F172A] transition-colors" type="button">
+<span class="font-label-sm text-[11px] font-medium leading-none">Central Store</span>
+<span class="material-symbols-outlined text-[14px]" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+</div>
+<!-- Trailing Action Controls -->
+<div class="flex items-center space-x-2">
+<!-- Sync Status Pill -->
+<div class="flex items-center space-x-1.5 px-2 py-1 rounded-full bg-[#DCFCE7] border border-[#BBF7D0]">
+<span class="w-2 h-2 rounded-full bg-[#16A34A] animate-pulse"></span>
+<span class="font-label-sm text-[11px] font-semibold text-[#16A34A]">Synced</span>
+</div>
+<!-- Barcode Scanner Launch Button (44x44px minimum touch) -->
+<button aria-label="Barcode Scanner" class="w-11 h-11 rounded-lg border border-[#E2E8F0] bg-surface-container-lowest flex items-center justify-center text-[#0F172A] active:bg-[#F1F5F9] active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[22px]" data-icon="barcode_scanner">barcode_scanner</span>
+</button>
+</div>
+</header>
+<!-- 2. SCROLLABLE BODY CONTENT -->
+<main class="flex-1 w-full pt-20 pb-24 px-4 flex flex-col space-y-4">
+<!-- Header Greeting Block -->
+<div class="flex items-start justify-between pt-1">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-[#64748B]">Monday, September 21</span>
+<h1 class="font-headline-sm text-headline-sm text-[#0F172A] tracking-tight mt-0.5">Good morning, Maya</h1>
+</div>
+<div class="flex items-center space-x-1 px-2.5 py-1 rounded-md bg-[#F1F5F9] border border-[#E2E8F0] text-[#434655]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#2563EB]"></span>
+<span class="font-label-sm text-[11px] font-medium">Register #01 • Open</span>
+</div>
+</div>
+<!-- Today's Sales Primary Summary Card -->
+<div class="w-full bg-surface-container-lowest rounded-xl border border-[#E2E8F0] p-4 flex flex-col">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-[#64748B]">Today's Sales</span>
+<span class="inline-flex items-center space-x-0.5 px-2 py-0.5 rounded-full bg-[#DCFCE7] text-[#16A34A] font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[14px]" data-icon="trending_up">trending_up</span>
+<span>+12.4% vs yesterday</span>
+</span>
+</div>
+<div class="mt-2 flex items-baseline space-x-1">
+<span class="font-headline-lg-mobile text-headline-lg-mobile text-[#0F172A] tracking-tight font-bold">$4,280.50</span>
+</div>
+<div class="mt-3 pt-3 border-t border-[#F1F5F9] flex items-center justify-between text-[#64748B] font-body-sm text-body-sm">
+<div class="flex items-center space-x-1">
+<span>Gross:</span>
+<span class="font-label-md text-label-md text-[#0F172A] font-semibold">$4,650.00</span>
+</div>
+<span class="text-[#CBD5E1]">•</span>
+<div class="flex items-center space-x-1">
+<span>Discounts:</span>
+<span class="font-label-md text-label-md text-[#BA1A1A] font-semibold">-$369.50</span>
+</div>
+</div>
+</div>
+<!-- Operational Metrics Grid (3 compact summary cards) -->
+<div class="grid grid-cols-3 gap-2.5 w-full">
+<!-- Orders Metric -->
+<div class="bg-surface-container-lowest rounded-xl border border-[#E2E8F0] p-3 flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-[#64748B]">Orders</span>
+<div class="w-6 h-6 rounded-md bg-[#EFF6FF] text-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]" data-icon="receipt">receipt</span>
+</div>
+</div>
+<div class="mt-2">
+<div class="font-title-md text-title-md font-bold text-[#0F172A]">128</div>
+<span class="font-label-sm text-[11px] font-semibold text-[#16A34A]">+8 new</span>
+</div>
+</div>
+<!-- Customers Metric -->
+<div class="bg-surface-container-lowest rounded-xl border border-[#E2E8F0] p-3 flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-[#64748B]">Customers</span>
+<div class="w-6 h-6 rounded-md bg-[#F5F3FF] text-[#7C3AED] flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]" data-icon="groups">groups</span>
+</div>
+</div>
+<div class="mt-2">
+<div class="font-title-md text-title-md font-bold text-[#0F172A]">84</div>
+<span class="font-label-sm text-[11px] text-[#64748B] block truncate">Avg $33.44</span>
+</div>
+</div>
+<!-- Low Stock Metric -->
+<div class="bg-surface-container-lowest rounded-xl border border-[#E2E8F0] p-3 flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-[#64748B]">Low Stock</span>
+<div class="w-6 h-6 rounded-md bg-[#FEF3C7] text-[#D97706] flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]" data-icon="warning">warning</span>
+</div>
+</div>
+<div class="mt-2">
+<div class="font-title-md text-title-md font-bold text-[#D97706]">6 items</div>
+<span class="font-label-sm text-[11px] font-semibold text-[#D97706]">Needs restock</span>
+</div>
+</div>
+</div>
+<!-- Quick Actions Section -->
+<div class="w-full flex flex-col space-y-2.5 pt-1">
+<h2 class="font-headline-sm text-headline-sm text-[#0F172A]">Quick Actions</h2>
+<div class="grid grid-cols-2 gap-2.5">
+<!-- 1. New Sale (Primary Action) -->
+<button class="h-14 bg-primary-container text-white rounded-xl flex items-center justify-center space-x-2 font-label-lg text-label-lg active:bg-[#1D4ED8] active:scale-95 transition-all shadow-none" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="add_shopping_cart">add_shopping_cart</span>
+<span>New Sale</span>
+</button>
+<!-- 2. Add Product -->
+<button class="h-14 bg-surface-container-lowest border border-[#E2E8F0] text-[#0F172A] rounded-xl flex items-center justify-center space-x-2 font-label-lg text-label-lg active:bg-[#F1F5F9] active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[20px] text-[#64748B]" data-icon="add_box">add_box</span>
+<span>Add Product</span>
+</button>
+<!-- 3. Customers -->
+<button class="h-14 bg-surface-container-lowest border border-[#E2E8F0] text-[#0F172A] rounded-xl flex items-center justify-center space-x-2 font-label-lg text-label-lg active:bg-[#F1F5F9] active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[20px] text-[#64748B]" data-icon="person_search">person_search</span>
+<span>Customers</span>
+</button>
+<!-- 4. Reports -->
+<button class="h-14 bg-surface-container-lowest border border-[#E2E8F0] text-[#0F172A] rounded-xl flex items-center justify-center space-x-2 font-label-lg text-label-lg active:bg-[#F1F5F9] active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[20px] text-[#64748B]" data-icon="bar_chart">bar_chart</span>
+<span>Reports</span>
+</button>
+</div>
+</div>
+<!-- Recent Transactions Section -->
+<div class="w-full flex flex-col space-y-2.5 pt-1">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-sm text-headline-sm text-[#0F172A]">Recent Transactions</h2>
+<button class="font-label-md text-label-md text-primary-container font-semibold active:opacity-75" type="button">
+            View All
+          </button>
+</div>
+<div class="bg-surface-container-lowest rounded-xl border border-[#E2E8F0] divide-y divide-[#E2E8F0] overflow-hidden">
+<!-- Transaction Row 1 -->
+<div class="p-3.5 flex items-center justify-between active:bg-[#F8FAFC] transition-colors">
+<div class="flex items-center space-x-3 min-w-0">
+<div class="w-10 h-10 rounded-lg bg-[#EFF6FF] border border-[#DBEAFE] text-primary-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]" data-icon="shopping_bag">shopping_bag</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center space-x-1.5">
+<span class="font-title-sm text-title-sm font-bold text-[#0F172A]">#ORD-10284</span>
+<span class="text-[#94A3B8]">•</span>
+<span class="font-body-md text-body-md text-[#64748B] truncate">John Customer</span>
+</div>
+<span class="font-body-sm text-body-sm text-[#94A3B8] mt-0.5">Today, 14:32 • 4 items</span>
+</div>
+</div>
+<div class="flex flex-col items-end flex-shrink-0 ml-3">
+<span class="font-title-sm text-title-sm font-bold text-[#0F172A]">$35.20</span>
+<span class="mt-0.5 px-2 py-0.5 rounded-full bg-[#DCFCE7] text-[#16A34A] font-label-sm text-[11px] font-semibold leading-tight">
+                Paid
+              </span>
+</div>
+</div>
+<!-- Transaction Row 2 -->
+<div class="p-3.5 flex items-center justify-between active:bg-[#F8FAFC] transition-colors">
+<div class="flex items-center space-x-3 min-w-0">
+<div class="w-10 h-10 rounded-lg bg-[#EFF6FF] border border-[#DBEAFE] text-primary-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]" data-icon="receipt_long">receipt_long</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center space-x-1.5">
+<span class="font-title-sm text-title-sm font-bold text-[#0F172A]">#ORD-10283</span>
+<span class="text-[#94A3B8]">•</span>
+<span class="font-body-md text-body-md text-[#64748B] truncate">Sarah Jenkins</span>
+</div>
+<span class="font-body-sm text-body-sm text-[#94A3B8] mt-0.5">Today, 14:15 • 2 items</span>
+</div>
+</div>
+<div class="flex flex-col items-end flex-shrink-0 ml-3">
+<span class="font-title-sm text-title-sm font-bold text-[#0F172A]">$18.50</span>
+<span class="mt-0.5 px-2 py-0.5 rounded-full bg-[#DCFCE7] text-[#16A34A] font-label-sm text-[11px] font-semibold leading-tight">
+                Paid
+              </span>
+</div>
+</div>
+<!-- Transaction Row 3 -->
+<div class="p-3.5 flex items-center justify-between active:bg-[#F8FAFC] transition-colors">
+<div class="flex items-center space-x-3 min-w-0">
+<div class="w-10 h-10 rounded-lg bg-[#EFF6FF] border border-[#DBEAFE] text-primary-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]" data-icon="shopping_bag">shopping_bag</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center space-x-1.5">
+<span class="font-title-sm text-title-sm font-bold text-[#0F172A]">#ORD-10282</span>
+<span class="text-[#94A3B8]">•</span>
+<span class="font-body-md text-body-md text-[#64748B] truncate">Walk-in Customer</span>
+</div>
+<span class="font-body-sm text-body-sm text-[#94A3B8] mt-0.5">Today, 13:58 • 7 items</span>
+</div>
+</div>
+<div class="flex flex-col items-end flex-shrink-0 ml-3">
+<span class="font-title-sm text-title-sm font-bold text-[#0F172A]">$94.20</span>
+<span class="mt-0.5 px-2 py-0.5 rounded-full bg-[#DCFCE7] text-[#16A34A] font-label-sm text-[11px] font-semibold leading-tight">
+                Paid
+              </span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- 3. FIXED BOTTOM NAVIGATION (Shared Component Anchor) -->
+<nav class="fixed bottom-0 left-0 w-full max-w-[430px] mx-auto right-0 z-50 flex items-center justify-around h-16 px-space-xs pb-safe bg-surface-container-lowest border-t border-[#E2E8F0]">
+<!-- Home (Active) -->
+<a class="flex flex-col items-center justify-center text-primary-container font-semibold py-1 active:scale-95 transition-transform duration-75" href="#">
+<span class="material-symbols-outlined text-[22px] fill" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm mt-0.5">Home</span>
+</a>
+<!-- POS -->
+<a class="flex flex-col items-center justify-center text-outline py-1 hover:bg-surface-container-low active:scale-95 transition-transform duration-75" href="#">
+<span class="material-symbols-outlined text-[22px]" data-icon="point_of_sale">point_of_sale</span>
+<span class="font-label-sm text-label-sm mt-0.5">POS</span>
+</a>
+<!-- Orders -->
+<a class="flex flex-col items-center justify-center text-outline py-1 hover:bg-surface-container-low active:scale-95 transition-transform duration-75" href="#">
+<span class="material-symbols-outlined text-[22px]" data-icon="receipt_long">receipt_long</span>
+<span class="font-label-sm text-label-sm mt-0.5">Orders</span>
+</a>
+<!-- Inventory -->
+<a class="flex flex-col items-center justify-center text-outline py-1 hover:bg-surface-container-low active:scale-95 transition-transform duration-75" href="#">
+<span class="material-symbols-outlined text-[22px]" data-icon="inventory_2">inventory_2</span>
+<span class="font-label-sm text-label-sm mt-0.5">Inventory</span>
+</a>
+<!-- More -->
+<a class="flex flex-col items-center justify-center text-outline py-1 hover:bg-surface-container-low active:scale-95 transition-transform duration-75" href="#">
+<span class="material-symbols-outlined text-[22px]" data-icon="more_horiz">more_horiz</span>
+<span class="font-label-sm text-label-sm mt-0.5">More</span>
+</a>
+</nav>
+</div>
+</body></html>

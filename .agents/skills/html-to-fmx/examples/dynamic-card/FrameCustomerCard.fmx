@@ -1,0 +1,39 @@
+object FrameCustomerCard: TFrameCustomerCard
+  HitTest = False
+  Size.Width = 360.000000000000000000
+  Size.Height = 112.000000000000000000
+  Size.PlatformDefault = False
+  object BackgroundPanel: TPanel
+    Align = Contents
+    HitTest = False
+    Size.Width = 360.000000000000000000
+    Size.Height = 112.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'app_panel_card'
+    TabOrder = 0
+  end
+  object CustomerNameLabel: TLabel
+    Align = Top
+    HitTest = False
+    Margins.Left = 16.000000000000000000
+    Margins.Top = 16.000000000000000000
+    Margins.Right = 16.000000000000000000
+    Size.Width = 328.000000000000000000
+    Size.Height = 24.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Customer name'
+    TabOrder = 1
+  end
+  object CustomerDetailLabel: TLabel
+    Align = Top
+    HitTest = False
+    Margins.Left = 16.000000000000000000
+    Margins.Top = 6.000000000000000000
+    Margins.Right = 16.000000000000000000
+    Size.Width = 328.000000000000000000
+    Size.Height = 24.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Customer detail'
+    TabOrder = 2
+  end
+end

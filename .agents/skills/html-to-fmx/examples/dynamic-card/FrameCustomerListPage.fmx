@@ -1,0 +1,56 @@
+object FrameCustomerListPage: TFrameCustomerListPage
+  Size.Width = 640.000000000000000000
+  Size.Height = 480.000000000000000000
+  Size.PlatformDefault = False
+  object HeaderLayout: TLayout
+    Align = Top
+    Size.Width = 640.000000000000000000
+    Size.Height = 56.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object ReloadButton: TCornerButton
+      Align = Right
+      Margins.Left = 8.000000000000000000
+      Margins.Top = 8.000000000000000000
+      Margins.Right = 8.000000000000000000
+      Margins.Bottom = 8.000000000000000000
+      Size.Width = 104.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Reload'
+      TabOrder = 0
+      OnClick = ReloadButtonClick
+    end
+    object TitleLabel: TLabel
+      Align = Client
+      HitTest = False
+      Margins.Left = 12.000000000000000000
+      Size.Width = 508.000000000000000000
+      Size.Height = 56.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Customers'
+      TabOrder = 1
+    end
+  end
+  object StatusLabel: TLabel
+    Align = Bottom
+    HitTest = False
+    Margins.Left = 12.000000000000000000
+    Size.Width = 628.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    Text = '0 customer(s)'
+    TabOrder = 1
+  end
+  object CustomersListBox: TListBox
+    Align = Client
+    StyleLookup = 'transparentlistboxstyle'
+    Margins.Left = 8.000000000000000000
+    Margins.Right = 8.000000000000000000
+    Size.Width = 624.000000000000000000
+    Size.Height = 392.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    OnItemClick = CustomersListBoxItemClick
+  end
+end

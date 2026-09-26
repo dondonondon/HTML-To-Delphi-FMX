@@ -1,0 +1,6 @@
+interface:
+  display_name: "HTML to Delphi FMX"
+  short_description: "Convert HTML to design-time FMX forms and Pascal"
+  default_prompt: "Use $html-to-fmx to map page, section, card, and grid-cell owners before creating native Delphi .fmx and .pas files. Keep static UI design-time, check each grid cell at narrow widths, use TGlyph for standalone icons and TCornerButton.Images/ImageIndex with glyphstyle for button icons, use reusable TFrame cards for variable TListBox data, and run css-to-fmx-style."
+policy:
+  allow_implicit_invocation: true
