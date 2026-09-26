@@ -61,7 +61,7 @@ Contoh berikut memperlihatkan struktur designer GPT-6 Sol Medium dan tampilan ap
 
 ### Seluruh percobaan
 
-Arsip hasil berisi 10 screenshot designer, 10 screenshot run awal, dan 8 screenshot run setelah perapian. Delapan hasil GPT yang dirapikan menggunakan GPT-6 Sol High. Hasil DeepSeek adalah **pure DeepSeek dengan harness Codex**; keduanya tidak memiliki gambar hasil perapian oleh GPT.
+Arsip desktop berisi 10 screenshot designer, 10 screenshot run awal, dan 8 screenshot run setelah perapian. Delapan hasil GPT yang dirapikan menggunakan GPT-6 Sol High. Hasil DeepSeek adalah **pure DeepSeek dengan harness Codex**; keduanya tidak memiliki gambar hasil perapian oleh GPT.
 
 | Percobaan | Durasi tercatat | Struktur designer | Run awal | Setelah dirapikan |
 | --- | ---: | --- | --- | --- |
@@ -75,6 +75,22 @@ Arsip hasil berisi 10 screenshot designer, 10 screenshot run awal, dan 8 screens
 | GPT-6 Astra Medium | 12m 52s | [Lihat](docs/result/image-design-time/SSDT-GPT-6%20Astra%20Medium.png) | [Lihat](docs/result/image-run/before-enhance/SS-GPT-6%20Astra%20Medium.png) | [Lihat](docs/result/image-run/after-enhance/SSAF-GPT-6%20Astra%20Medium.png) |
 | DeepSeek V4 Pro High | 36m 29s | [Lihat](docs/result/image-design-time/SSDT-Deepseek-V4-Pro%20High.png) | [Lihat](docs/result/image-run/before-enhance/SS-Deepseek-v4-Pro%20High.png) | Pure DeepSeek |
 | DeepSeek V4.1 Flash High | 24m 30s | [Lihat](docs/result/image-design-time/SSDT-Deepseek-V4.1-Flash%20High.png) | [Lihat](docs/result/image-run/before-enhance/SS-Deepseek-v4.1-Flash%20High.png) | Pure DeepSeek |
+
+### Hasil run Android
+
+Arsip ini juga berisi 10 screenshot run Android, satu untuk setiap percobaan setelah alur akhirnya selesai. Varian GPT telah dirapikan dengan GPT-6 Sol High; dua screenshot DeepSeek tetap merupakan hasil murni DeepSeek meskipun nama foldernya `mobile-after-enhance`.
+
+| Hasil visual terbaik: GPT-6 Astra Light + GPT-6 Sol High | Nilai terbaik: GPT-6 Sol Medium + GPT-6 Sol High |
+| --- | --- |
+| <img src="docs/result/image-run/mobile-after-enhance/Mobile-GPT-6%20Astra%20Light.jpg" width="260" alt="Hasil run Android GPT-6 Astra Light setelah dirapikan GPT-6 Sol High"> | <img src="docs/result/image-run/mobile-after-enhance/Mobile-GPT-6%20Sol%20Medium.jpg" width="260" alt="Hasil run Android GPT-6 Sol Medium setelah dirapikan GPT-6 Sol High"> |
+
+| Percobaan | Screenshot Android | Percobaan | Screenshot Android |
+| --- | --- | --- | --- |
+| GPT-5.6 Terra Light | [Lihat](docs/result/image-run/mobile-after-enhance/Mobile-GPT-5.6%20Terra%20Light.jpg) | GPT-5.6 Terra Medium | [Lihat](docs/result/image-run/mobile-after-enhance/Mobile-GPT-5.6%20Terra%20Medium.jpg) |
+| GPT-5.6 Terra High | [Lihat](docs/result/image-run/mobile-after-enhance/Mobile-GPT-5.6%20Terra%20High.jpg) | GPT-6 Luna High | [Lihat](docs/result/image-run/mobile-after-enhance/Mobile-GPT-6%20Luna%20High.jpg) |
+| GPT-6 Sol Light | [Lihat](docs/result/image-run/mobile-after-enhance/Mobile-GPT-6%20Sol%20Light.jpg) | GPT-6 Sol Medium | [Lihat](docs/result/image-run/mobile-after-enhance/Mobile-GPT-6%20Sol%20Medium.jpg) |
+| GPT-6 Astra Light | [Lihat](docs/result/image-run/mobile-after-enhance/Mobile-GPT-6%20Astra%20Light.jpg) | GPT-6 Astra Medium | [Lihat](docs/result/image-run/mobile-after-enhance/Mobile-GPT-6%20Astra%20Medium.jpg) |
+| DeepSeek V4 Pro High | [Lihat](docs/result/image-run/mobile-after-enhance/Mobile-Deepseek-V4-Pro%20High.jpg) | DeepSeek V4.1 Flash High | [Lihat](docs/result/image-run/mobile-after-enhance/Mobile-Deepseek-V4.1-Flash%20High.jpg) |
 
 ### Catatan waktu dan biaya
 
@@ -91,18 +107,19 @@ Biaya GPT yang tepat tidak dicatat. Berdasarkan persentase penggunaan Pro 5x, pe
 
 - **Biaya lebih rendah, lebih banyak perapian manual:** DeepSeek V4.1 Flash High cocok sebagai titik awal jika hasilnya akan dirapikan sendiri.
 - **Hasil langsung yang kuat:** DeepSeek V4 Pro High memberikan hasil sangat baik, tetapi percobaan saat peak hours lebih mahal dan lebih lama. Penulis memperkirakan biayanya lebih rendah di luar peak hours; perkiraan itu belum diukur dalam percobaan ini.
-- **Alur keseluruhan yang dipilih:** Hasil awal GPT-6 Sol Medium sudah bagus. GPT-6 Sol High membuatnya lebih rapi. Berdasarkan penggunaan Pro 5x, perapian hasil yang sudah ada tampak lebih murah daripada mengulang konversi dari awal, tetapi biaya GPT yang tepat tidak dicatat.
+- **Hasil visual terbaik:** GPT-6 Astra Light yang dilanjutkan dengan perapian GPT-6 Sol High memberikan hasil paling bagus menurut penulis.
+- **Nilai terbaik:** Hasil awal GPT-6 Sol Medium sudah bagus dan GPT-6 Sol High membuatnya lebih rapi. Ini adalah pilihan penulis untuk keseimbangan hasil dan biaya. Berdasarkan penggunaan Pro 5x, perapian hasil yang sudah ada tampak lebih murah daripada mengulang konversi dari awal, tetapi biaya GPT yang tepat tidak dicatat.
 - **Alternatif lain:** GPT-5.6 Terra yang dilanjutkan dengan perapian GPT-6 Sol High juga memberikan hasil bagus.
 - **Struktur designer:** Hierarki komponen yang dihasilkan relatif mirip antarpercobaan.
 
-Untuk percobaan ini, pilihan keseluruhan penulis adalah **GPT-6 Sol Medium → GPT-6 Sol High**. **DeepSeek V4 Pro High** juga layak dipertimbangkan di luar peak hours jika biayanya turun sesuai perkiraan.
+Pilih **GPT-6 Astra Light → GPT-6 Sol High** jika kualitas visual menjadi prioritas utama. Pilih **GPT-6 Sol Medium → GPT-6 Sol High** untuk keseimbangan biaya dan hasil yang paling baik menurut penulis. **DeepSeek V4 Pro High** juga layak dipertimbangkan di luar peak hours jika biayanya turun sesuai perkiraan.
 
 ## Struktur repository
 
 ```text
 .agents/skills/          Tiga agent skill dan file pendukungnya
 docs/ui-dashboard.html   Input HTML pengujian
-docs/result/             Screenshot browser, designer, dan aplikasi saat run
+docs/result/             Screenshot browser, designer, desktop, dan run Android
 PROMPTS.md               Prompt siap pakai dalam bahasa Inggris
 README.md                Dokumentasi bahasa Inggris
 SOURCES.md               Referensi dokumentasi dan pihak ketiga
@@ -112,7 +129,7 @@ CONTRIBUTING.md          Panduan kontribusi
 
 ## Batas validasi
 
-Screenshot mencatat percobaan desktop dan tampilan designer tertentu. Gambar tersebut tidak memvalidasi konversi baru, versi Delphi lain, atau target mobile. Setiap penggunaan skill tetap memerlukan pemeriksaan project tujuan, integrasi style, serta validasi build, designer, dan runtime yang tersedia pada toolchain-nya.
+Screenshot mencatat tampilan designer serta hasil run desktop dan Android tertentu. Gambar tersebut menunjukkan hasil visual dari percobaan itu; gambar tidak memvalidasi konversi baru, perilaku interaksi, berbagai perangkat, atau versi Delphi lain. Setiap penggunaan skill tetap memerlukan pemeriksaan project tujuan, integrasi style, serta validasi build, designer, dan runtime yang tersedia pada toolchain-nya.
 
 Preview HTML memuat Inter, Material Symbols, dan Tailwind dari layanan eksternal. Tampilan yang dimaksud membutuhkan koneksi jaringan saat dibuka secara lokal. Project aplikasi dan dokumen hasil konversi tidak disertakan dalam repository ini.
 

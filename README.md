@@ -61,7 +61,7 @@ The following example shows the GPT-6 Sol Medium designer structure and applicat
 
 ### All attempts
 
-The archive contains 10 designer captures, 10 initial run captures, and 8 run captures after refinement. The eight refined GPT results used GPT-6 Sol High. The DeepSeek results are **pure DeepSeek with a Codex harness**; neither has a GPT refinement image.
+The desktop archive contains 10 designer captures, 10 initial run captures, and 8 run captures after refinement. The eight refined GPT results used GPT-6 Sol High. The DeepSeek results are **pure DeepSeek with a Codex harness**; neither has a GPT refinement image.
 
 | Attempt | Time noted | Designer structure | Initial run | After refinement |
 | --- | ---: | --- | --- | --- |
@@ -75,6 +75,22 @@ The archive contains 10 designer captures, 10 initial run captures, and 8 run ca
 | GPT-6 Astra Medium | 12m 52s | [View](docs/result/image-design-time/SSDT-GPT-6%20Astra%20Medium.png) | [View](docs/result/image-run/before-enhance/SS-GPT-6%20Astra%20Medium.png) | [View](docs/result/image-run/after-enhance/SSAF-GPT-6%20Astra%20Medium.png) |
 | DeepSeek V4 Pro High | 36m 29s | [View](docs/result/image-design-time/SSDT-Deepseek-V4-Pro%20High.png) | [View](docs/result/image-run/before-enhance/SS-Deepseek-v4-Pro%20High.png) | Pure DeepSeek |
 | DeepSeek V4.1 Flash High | 24m 30s | [View](docs/result/image-design-time/SSDT-Deepseek-V4.1-Flash%20High.png) | [View](docs/result/image-run/before-enhance/SS-Deepseek-v4.1-Flash%20High.png) | Pure DeepSeek |
+
+### Android runs
+
+The archive also contains 10 Android run screenshots, one for each attempt after its final workflow. The GPT variants had a GPT-6 Sol High refinement; the two DeepSeek captures remain pure DeepSeek despite the `mobile-after-enhance` folder name.
+
+| Best visual result: GPT-6 Astra Light + GPT-6 Sol High | Best value: GPT-6 Sol Medium + GPT-6 Sol High |
+| --- | --- |
+| <img src="docs/result/image-run/mobile-after-enhance/Mobile-GPT-6%20Astra%20Light.jpg" width="260" alt="Android run of GPT-6 Astra Light after GPT-6 Sol High refinement"> | <img src="docs/result/image-run/mobile-after-enhance/Mobile-GPT-6%20Sol%20Medium.jpg" width="260" alt="Android run of GPT-6 Sol Medium after GPT-6 Sol High refinement"> |
+
+| Attempt | Android screenshot | Attempt | Android screenshot |
+| --- | --- | --- | --- |
+| GPT-5.6 Terra Light | [View](docs/result/image-run/mobile-after-enhance/Mobile-GPT-5.6%20Terra%20Light.jpg) | GPT-5.6 Terra Medium | [View](docs/result/image-run/mobile-after-enhance/Mobile-GPT-5.6%20Terra%20Medium.jpg) |
+| GPT-5.6 Terra High | [View](docs/result/image-run/mobile-after-enhance/Mobile-GPT-5.6%20Terra%20High.jpg) | GPT-6 Luna High | [View](docs/result/image-run/mobile-after-enhance/Mobile-GPT-6%20Luna%20High.jpg) |
+| GPT-6 Sol Light | [View](docs/result/image-run/mobile-after-enhance/Mobile-GPT-6%20Sol%20Light.jpg) | GPT-6 Sol Medium | [View](docs/result/image-run/mobile-after-enhance/Mobile-GPT-6%20Sol%20Medium.jpg) |
+| GPT-6 Astra Light | [View](docs/result/image-run/mobile-after-enhance/Mobile-GPT-6%20Astra%20Light.jpg) | GPT-6 Astra Medium | [View](docs/result/image-run/mobile-after-enhance/Mobile-GPT-6%20Astra%20Medium.jpg) |
+| DeepSeek V4 Pro High | [View](docs/result/image-run/mobile-after-enhance/Mobile-Deepseek-V4-Pro%20High.jpg) | DeepSeek V4.1 Flash High | [View](docs/result/image-run/mobile-after-enhance/Mobile-Deepseek-V4.1-Flash%20High.jpg) |
 
 ### Time and cost notes
 
@@ -91,18 +107,19 @@ Exact GPT charges were not recorded. Based on Pro 5x usage percentages, the auth
 
 - **Lower cost, more manual work:** DeepSeek V4.1 Flash High is a starting point when you plan to refine the output yourself.
 - **Strong direct output:** DeepSeek V4 Pro High produced a very good result, but its peak hours run cost more and took longer. The author expects a lower cost outside peak hours; that expectation has not been measured here.
-- **Preferred overall workflow:** GPT-6 Sol Medium already looked good in the initial run. GPT-6 Sol High made it more polished. Based on Pro 5x usage, refining an existing result appeared cheaper than repeating the conversion from scratch, although exact GPT charges were not tracked.
+- **Best visual result:** GPT-6 Astra Light followed by GPT-6 Sol High refinement produced the strongest result in the author's judgment.
+- **Best value:** GPT-6 Sol Medium already looked good in the initial run, and GPT-6 Sol High made it more polished. This is the author's preferred balance of result and cost. Based on Pro 5x usage, refinement appeared cheaper than repeating the conversion from scratch, although exact GPT charges were not tracked.
 - **Another good route:** GPT-5.6 Terra followed by GPT-6 Sol High refinement also produced a good result.
 - **Designer structure:** The resulting component hierarchies were relatively similar across attempts.
 
-For this experiment, the author's overall choice is **GPT-6 Sol Medium → GPT-6 Sol High**. **DeepSeek V4 Pro High** is also worth considering outside peak hours if its cost falls as expected.
+Choose **GPT-6 Astra Light → GPT-6 Sol High** when visual quality matters most. Choose **GPT-6 Sol Medium → GPT-6 Sol High** for the author's preferred price to result balance. **DeepSeek V4 Pro High** is also worth considering outside peak hours if its cost falls as expected.
 
 ## Repository layout
 
 ```text
 .agents/skills/          Three agent skills and their supporting files
 docs/ui-dashboard.html   HTML test input
-docs/result/             Browser, designer, and application run captures
+docs/result/             Browser, designer, desktop, and Android run captures
 PROMPTS.md               Copy-ready prompts
 README-ID.md             Indonesian documentation
 SOURCES.md               Documentation and third-party references
@@ -112,7 +129,7 @@ CONTRIBUTING.md          Contribution guidance
 
 ## Validation and scope
 
-The screenshots record particular desktop runs and designer views. They do not verify a new conversion, other Delphi versions, or mobile targets. Each use of the skills still requires inspection of the target project, style integration, and whatever build, designer, and runtime checks its toolchain permits.
+The screenshots record particular designer, desktop, and Android runs. They show visual output from those attempts; they do not verify a new conversion, interaction behavior, a device matrix, or other Delphi versions. Each use of the skills still requires inspection of the target project, style integration, and whatever build, designer, and runtime checks its toolchain permits.
 
 The HTML preview loads Inter, Material Symbols, and Tailwind from external services; opening it locally needs network access for the intended appearance. The application project and generated conversion documents are not included in this repository.
 
