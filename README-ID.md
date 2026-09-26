@@ -105,7 +105,7 @@ Durasi di atas berasal dari catatan tiap percobaan. Biaya DeepSeek berikut dicat
 | DeepSeek V4.1 Flash High | **US$0.34** |
 | DeepSeek V4 Pro High | **US$1.74** |
 
-Biaya GPT yang tepat tidak dicatat. Berdasarkan persentase penggunaan Pro 5x, penulis memperkirakan setiap percobaan Astra sekitar **US$1** dan percobaan GPT lainnya **di bawah US$1**. Angka tersebut merupakan perkiraan pribadi. Kondisi percobaan berbeda, sehingga hasil ini bukan benchmark kecepatan, biaya, atau kualitas yang terkontrol.
+Biaya GPT yang tepat tidak dicatat. Berdasarkan persentase penggunaan Pro 5x, penulis memperkirakan setiap percobaan Astra sekitar **1%** dan percobaan GPT lainnya **di bawah 1%**. Angka tersebut merupakan perkiraan pribadi. Kondisi percobaan berbeda, sehingga hasil ini bukan benchmark kecepatan, biaya, atau kualitas yang terkontrol.
 
 ## Kesimpulan penulis
 

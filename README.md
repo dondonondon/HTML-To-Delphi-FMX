@@ -105,7 +105,7 @@ The times above are notes from individual attempts. The author recorded these De
 | DeepSeek V4.1 Flash High | **US$0.34** |
 | DeepSeek V4 Pro High | **US$1.74** |
 
-Exact GPT charges were not recorded. Based on Pro 5x usage percentages, the author estimated each Astra attempt at about **US$1** and the other GPT attempts at **under US$1**. These figures are personal estimates. The attempts used different conditions and do not form a controlled speed, cost, or quality benchmark.
+Exact GPT charges were not recorded. Based on Pro 5x usage percentages, the author estimated each Astra attempt at about **1%** and the other GPT attempts at **under 1%**. These figures are personal estimates. The attempts used different conditions and do not form a controlled speed, cost, or quality benchmark.
 
 ## Author's takeaways
 
