@@ -72,6 +72,18 @@ Example from the GPT-6 Sol Medium attempt:
 
 The design-time captures show the editable frame hierarchy in RAD Studio. The run captures show one desktop rendering per attempt, at the stage indicated by its folder. The HTML preview loads Inter, Material Symbols, and Tailwind from external services; its intended local appearance needs network access.
 
+## Author's conclusions
+
+These conclusions reflect my experience with the individual attempts above. Conditions varied between runs.
+
+- For a lower cost starting point, I would use DeepSeek V4.1 Flash High and refine its output myself. That route takes a little more manual effort.
+- DeepSeek V4 Pro High produced a very good result without a later GPT refinement, but its peak hours run cost more and took longer. I expect it to cost less outside peak hours; that expectation has not been measured in this experiment.
+- The initial GPT-6 Sol Medium run already looked good. Refining it with GPT-6 Sol High made the result more polished. In my Pro 5x usage, refinement appeared to cost less than starting a new conversion, although I did not record exact GPT charges.
+- GPT-5.6 Terra followed by GPT-6 Sol High refinement also produced a good result.
+- The design-time component hierarchies were relatively similar across the attempts.
+
+For the overall workflow, my choice is **GPT-6 Sol Medium followed by GPT-6 Sol High**. Outside peak hours, **DeepSeek V4 Pro High** is also worth considering if its cost falls as expected.
+
 ## Repository contents
 
 ```text
