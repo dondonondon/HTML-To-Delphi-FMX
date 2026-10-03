@@ -1,0 +1,6 @@
+interface:
+  display_name: "Create Delphi FMX UI"
+  short_description: "Build native FMX screens from a brief or screenshot"
+  default_prompt: "Use $create-fmx-ui to create an editable native .fmx/.pas screen from my requirements or screenshot. Reuse the project's DESIGN.md or equivalent, creating a guide if missing. Reuse or update the main form's StyleBook, creating it there if missing. Write external style files only when explicitly requested. Report design consistency and actual validation."
+policy:
+  allow_implicit_invocation: true

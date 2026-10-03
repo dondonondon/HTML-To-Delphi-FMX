@@ -1,0 +1,6 @@
+interface:
+  display_name: "Screenshot to FMX Mapping"
+  short_description: "Plan native FMX component hierarchy from an image"
+  default_prompt: "Use $screenshot-to-fmx-mapping to inspect my attached UI screenshot and produce a Markdown map of native Delphi FMX regions, sections, cards, controls, and data lists. Mark assumptions and missing assets. Do not implement .fmx or .pas files."
+policy:
+  allow_implicit_invocation: true

@@ -18,16 +18,27 @@ A typical component-role row:
 | `.btn-primary` | TCornerButton | primary action | FrameCustomers.AddButton |
 | `.search-input` | TEdit | search field | FrameCustomers.SearchEdit |
 | `.customer-card` | TPanel | reusable card surface | FrameCustomerCard.BackgroundPanel |
+| `.single-offer` | TRectangle | one-off card surface; design-time properties | FrameCustomers.OfferBackground |
 
 ## Output to html-to-fmx
 
 Update `FMX_STYLE_MAPPING.md` with:
 
 - Style file path, target/platform assumptions and resource `StyleName` values.
+- Known effective runtime source/load order, including compiled resource inputs and
+  embedded designer synchronization; mark unknown host integration explicitly.
 - Exact compatible consumer types and the `StyleLookup` to assign.
+- Consumer reuse evidence: distinct instances or a card frame's repeated list/factory
+  binding. A single `Unit.Control` path does not establish single-use by itself.
+- For property-only mappings, the design-time control/property values and `N/A`
+  StyleLookup. Multiple CSS selectors or consumers may point to one shared FMX
+  style; the mapping retains their individual source provenance.
 - Any required instance properties, e.g. button radius or text settings.
 - For icon buttons, the image-list source, `Images`/`ImageIndex` requirements,
-  `glyphstyle` part and icon/text spacing at the smallest supported width.
+  shared `StyleLookup`, `glyphstyle` placement and icon/text spacing at the
+  smallest supported width.
+- For local `TLabel` or button typography, the font/text properties and exact
+  `StyledSettings` flags to remove; keep flags for values owned by a shared style.
 - Geometry/responsive/interaction declarations not representable in `.style`.
 - States, approximations, unresolved assets/contracts, and observed validation.
 

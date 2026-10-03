@@ -16,6 +16,11 @@
 # Local conversion output and private experiment notes
 /docs/ui/
 /docs/result/rangkuman.md
+/docs/result/**/rangkuman.md
+/.codex-build/
+/.playwright-cli/
+/output/
+/docs/result/**/presentation/export/
 
 # Editor and OS artifacts
 .DS_Store

@@ -37,16 +37,24 @@ generate separate units for dummy row 1, row 2 and row 3.
 The page owns the design-time `TListBox` with
 `StyleLookup = 'transparentlistboxstyle'` serialized in its `.fmx`. Normally
 create and bind `TListBoxItem` and card instances at runtime because the number
-of records varies. Provide a
-conversion preview with two or three representative dummy records through this same
-binding path so the result can be reviewed as a populated list. Include useful
-variation such as long text, status and optional content. Keep the samples in a
-clearly scoped preview/demo path and clear them before loading real records. Do not
-pass dummy data to services or let it appear as a real saved record.
-Use the preview path deliberately. An empty result, network failure or authorization
+of records varies.
+
+## Optional preview and validation records
+
+Prefer available real records for validation. Provide two or three representative
+fixtures only for a requested demo/designer preview or an isolated validation harness;
+do not add a production preview mode, switch, or dummy-loading branch for conversion
+alone. When preview is prohibited, omit it and record unavailable populated-list
+checks as `not run` if real records cannot exercise them.
+
+When used, bind fixtures through the same item factory and card binding path as real
+records. Include long text, status and optional content where relevant. Keep fixtures
+in the requested demo or isolated harness and never pass them to services or present
+them as saved records. Clear or replace any explicitly requested application demo
+items before real data loads; repeated activation must not duplicate them.
+An empty result, network failure or authorization
 error from a real source must keep its actual empty/error state; never substitute
-dummy records automatically. Populate the preview once per load and clear prior
-preview items so repeated navigation does not duplicate them.
+dummy records automatically.
 
 If the requested deliverable specifically needs populated items in the Delphi
 designer, serialize a small preview only when the target Delphi version can load
@@ -82,6 +90,16 @@ the same card frame for rows with and without an action. If an independent actio
 or editable control cannot work with this pattern, document the conflict and
 request a behavior decision; never silently drop it.
 
+Creating this optional sibling with a variable item is a narrow exception to the
+runtime-control restriction. It belongs to the shared item factory and the item's
+lifetime, with its action, geometry, style and row identity recorded in the map.
+Assign its mapped instance properties, including `Images`/`ImageIndex`, in that factory.
+Bind and free it with that item. The card's fixed descendants remain in its `.fmx`,
+with `HitTest=False`; this exception does not permit recreating card children,
+building a static page in code, adding presenter wrappers, or moving the action into
+the card. Verify its hit area after resize/scroll and that one activation dispatches
+only its own action. Fixed design-time items keep their actions design-time.
+
 ## Identity, ownership and exceptions
 
 Prefer the project's existing binding strategy or a small typed TListBoxItem descendant
@@ -108,8 +126,8 @@ after binding or reflow if content changes card height. Do not add empty spacer
 items or wrapper layouts just to separate cards. Keep item click handling on
 the whole row, including the gap.
 
-Apply that same item factory, gap and card height calculation to dummy preview
-and real records. For a multi-column data list, check spacing on both axes and
+Apply that same item factory, gap and card height calculation to real records and
+preview records when used. For a multi-column data list, check spacing on both axes and
 that added space does not clip card content or overflow a column. If the source
 intentionally uses connected rows with dividers instead of separate cards,
 record that choice and implement visible dividers; do not leave touching card

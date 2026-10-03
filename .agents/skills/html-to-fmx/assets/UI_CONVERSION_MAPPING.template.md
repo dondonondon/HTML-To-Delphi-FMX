@@ -5,6 +5,7 @@
 - HTML / CSS / assets: <paths>
 - Target page / project / Delphi platforms: <detected context>
 - Shared style mapping: <FMX_STYLE_MAPPING.md path>
+- Source visual baseline: <HTML render/capture path; logical viewport, zoom/scale; or not available>
 
 ## Region mapping — complete before implementation
 
@@ -26,7 +27,8 @@
 - Detail rows: <whether rows come from a collection, field set/order/count varies, or only fixed values change; one shared card class if a list; optional row action owner>
 - Icons: <standalone TGlyph or TCornerButton.Images/ImageIndex + style glyphstyle; asset status>
 - Grid widths: <smallest supported/reference/wider sizes; child anchors/align, icon gap, trimming/reflow>
-- Preview records: <two or three dummy records through card binding; replacement by real data>
+- Preview status: <not used / requested demo or designer preview / isolated harness; when used, fixtures through real card binding and replacement by real data>
+- Independent row actions: <item-owned sibling, variable-item factory/lifetime, stable row key, geometry/style and separate click verification; or none>
 
 ### Proposed page component tree
 
@@ -97,9 +99,12 @@ Remove unused sections; do not turn this mapping into a PRD.
 ## Integration and validation
 
 - Main form / StyleBook: <path + component>
+- Effective runtime style source / load order: <embedded/file/named resource; initialization and existing theme reloads>
 - Style deployment / designer synchronization: <strategy>
+- Style survival after startup/reload: <passed/failed/not run + requested names and preserved consumers>
 - Static checks: <passed/failed/not run + evidence>
 - Delphi build: <command/target/result, or not run>
 - Designer/resource load: <result, or not run>
 - Interaction/platform/visual checks: <result, or not run>
+- HTML-versus-FMX comparison: <reference/native capture paths; matched viewport, scale and data state; differences; passed/failed/not run>
 - Actual `.fmx` parentage versus this map: <passed/failed/not run + differences>

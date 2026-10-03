@@ -76,8 +76,8 @@ each repeated region's classification before choosing the implementation.
 | HTML intent | Primary FMX choice |
 |---|---|
 | Structural group | TLayout |
-| Reusable styled surface | Background TPanel + StyleLookup |
-| One-off decorative shape | Sibling TRectangle, design-time properties |
+| Single-use card surface or decorative shape | Sibling TRectangle with design-time fill/stroke/radius/effects |
+| Card surface shared by multiple consumers | Background TPanel + one reusable StyleLookup |
 | Button / clickable icon action | TCornerButton with Images/ImageIndex and a style `TGlyph` part named `glyphstyle` |
 | Text input | TEdit |
 | Multiline input | TMemo |
@@ -98,6 +98,13 @@ only when the icon varies with data or state. Keep standalone glyphs
 input-transparent when another control owns the action. Map source icon
 fonts/SVGs to compatible image-list assets; do not substitute text, emoji,
 `TImage` or `TPath` for icons.
+Give icon-only buttons the same StyleLookup when their surface, states and glyph
+placement match. A centered source icon needs a centered `glyphstyle`, not the
+left-glyph/text layout of a captioned button. Create a separate client-aligned
+glyph variant only when its fill behavior is required. A `TRectangle` with a
+`TGlyph` is a property-only alternative for a simple clickable icon when its
+input, focus and action behavior are verified; prefer the reusable button style
+when several icon actions share the same appearance.
 Check image-list availability in the designer and on target platforms. If the
 source asset cannot be supplied, record the missing icon rather than presenting a
 text stand-in as a completed conversion.
@@ -199,12 +206,14 @@ CardFrame: TFrame
 Avoid `TLayout -> TRectangle -> TLayout -> TCornerButton/TEdit` when the rectangle
 only paints a background. Avoid chains of single-child `TLayout` controls used only
 to imitate HTML wrappers. Place labels, edits and buttons directly in their nearest
-functional owner: page region, section, card or cell. Use `Align`, `Anchors`,
-`Margins` and `Padding` for placement. Do not place multiple distinct card surfaces
-and their labels/buttons directly under one content layout. Structural depth has no
+functional owner: page region, section, card or cell. Prefer `Anchors` with
+intentional initial bounds for internal placement; use `Align`, `Margins` and
+`Padding` where they match the intended layout. Do not place multiple distinct
+card surfaces and their labels/buttons directly under one content layout. Structural depth has no
 numeric target; each level must have a visible or behavioral responsibility.
 
-A full-background sibling normally uses `Align=Contents`, `HitTest=False`, and sits
+A full-background `TRectangle` sibling normally uses `Align=Contents`,
+`HitTest=False`, and sits
 behind the content in object order. `Align=Client` can participate in normal space
 allocation; do not assume it is always a harmless overlay. Check z-order, padding,
 bounds, clipping and input after loading. Do not fix bad resource order with repeated
@@ -214,10 +223,33 @@ Keep style-resource internal trees separate from application-layout depth checks
 
 ## Responsiveness
 
-Prefer Align, Anchors, Margins and Padding. Use a small resize procedure only where
-required to adjust EXISTING controls or list columns/item geometry. No new static
+Start with `Anchors` for controls inside a frame, section, card or cell. Use
+`Align` when the parent must allocate space to a child, especially a simple
+layout or the page shell: header `Align=Top`, footer `Align=Bottom`, content
+`Align=Client`. A background `TRectangle` uses `Align=Contents` behind its
+foreground siblings. Use `Margins` and `Padding` for intended gaps. Use a small
+resize procedure only where required to adjust EXISTING controls or list
+columns/item geometry. No new static
 controls on each resize. Translate layout behavior rather than copying every CSS
 position or media query. Preserve reading order and visible hit areas.
+
+Specify the resize behavior for each container boundary, from the form/frame root
+through the section/card/cell owner to its children. A child follows its immediate
+parent, so a full-width child inside a fixed-width owner still cannot follow the
+frame. For an internally positioned child, set `Align=None`, its initial
+design-time bounds, and the edges in `Anchors` that must retain their distance.
+Use `Align` when the child should participate in the parent's space allocation.
+When that allocation would shrink other aligned siblings, keep the independently
+positioned child anchored instead.
+For example, a bottom control alongside `Align=Left` and `Align=Client` siblings
+can use `Anchors=[akLeft,akRight,akBottom]` to keep its bottom inset and stretch
+its width without taking height from those siblings. Set its initial bounds and
+intended edge gaps in the designer. This is an overlay within that parent: check
+z-order, overlap, clipping and hit areas; parent it to the client region instead
+if it should not cover the left region. Anchor behavior depends on the immediate
+parent resizing. Neither the presence of `Anchors` nor a runtime resize handler
+proves the intended designer behavior; resize the actual parent/frame in the
+designer and observe the result.
 
 For every grid cell, inspect the bounds of its actual descendants at the smallest
 supported, reference and wider widths. Make a card background follow the cell

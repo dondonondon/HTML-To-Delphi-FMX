@@ -44,6 +44,7 @@ object FrameCustomerListPage: TFrameCustomerListPage
   end
   object CustomersListBox: TListBox
     Align = Client
+    ShowScrollBars = False
     StyleLookup = 'transparentlistboxstyle'
     Margins.Left = 8.000000000000000000
     Margins.Right = 8.000000000000000000

@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23192723'/%3E%3Cpath d='M10 5h4v5h5v4h-5v5h-4v-5H5v-4h5z' fill='white'/%3E%3C/svg%3E">
+  <title>Sehat — Healthcare Appointment App</title>
+  <style>
+    :root { color-scheme: light; --ink: #192723; --muted: #7c8681; --line: #e7ebe8; --soft: #f4f7f5; --mint: #e5f3ed; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #edf1ef; color: var(--ink); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 14px; }
+    button, input { font: inherit; }
+    button { color: inherit; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+    button, input { touch-action: manipulation; }
+    button:focus-visible, input:focus-visible { outline: 2px solid #287858; outline-offset: 3px; }
+    svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+    .icon-definitions { position: absolute; width: 0; height: 0; overflow: hidden; }
+    .app { max-width: 480px; height: 100vh; height: 100dvh; min-height: 240px; margin: auto; display: flex; flex-direction: column; background: #fff; }
+    .content { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior-y: contain; padding: calc(22px + env(safe-area-inset-top)) 22px 24px; scrollbar-width: thin; }
+    .header { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 20px; }
+    .eyebrow { margin: 0 0 5px; color: var(--muted); font-size: 11px; }
+    h1 { font-size: 23px; line-height: 1.15; letter-spacing: -.8px; margin: 0; font-weight: 750; }
+    .avatar { width: 44px; height: 44px; border: 0; background: var(--ink); color: white; border-radius: 50%; display: grid; place-items: center; font-size: 12px; font-weight: 600; }
+    .search { display: flex; align-items: center; gap: 10px; padding: 0 13px; min-height: 44px; border: 1px solid #dde4df; border-radius: 11px; margin-bottom: 21px; background: #fcfdfc; }
+    .search svg { width: 18px; height: 18px; color: var(--muted); }
+    .search input { width: 100%; min-width: 0; border: 0; background: transparent; padding: 12px 0; color: var(--ink); font-size: 16px; }
+    .search input::placeholder { color: #929b95; font-size: 12px; }
+    .search:focus-within { border-color: var(--ink); }
+    .search input:focus-visible { outline-offset: 0; }
+    .categories { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 5px; margin-bottom: 22px; }
+    .category { border: 0; background: transparent; padding: 2px 0; display: flex; flex-direction: column; align-items: center; gap: 8px; min-width: 0; }
+    .category-icon { display: grid; place-items: center; width: 42px; height: 42px; background: var(--ink); color: white; border-radius: 14px; }
+    .category-icon svg { width: 21px; height: 21px; }
+    .category-label { color: var(--muted); font-size: 10px; line-height: 16px; }
+    .category[aria-pressed="true"] .category-icon { box-shadow: 0 0 0 3px #fff, 0 0 0 4px #b7d3c4; }
+    .category[aria-pressed="true"] .category-label { font-weight: 700; color: var(--ink); }
+    .section-heading { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+    h2 { margin: 0; font-size: 14px; letter-spacing: -.25px; }
+    .text-button { min-height: 44px; padding: 4px 0 4px 8px; border: 0; background: transparent; font-size: 10px; color: var(--muted); display: flex; align-items: center; gap: 3px; }
+    .text-button svg { width: 13px; height: 13px; }
+    .upcoming { margin-bottom: 22px; }
+    .appointment-card { width: 100%; display: block; text-align: left; padding: 13px; background: white; border: 1px solid var(--ink); border-radius: 13px; box-shadow: 0 8px 0 -2px var(--ink); }
+    .appointment-top { display: flex; align-items: center; gap: 10px; margin-bottom: 11px; }
+    .appointment-top .portrait { width: 37px; height: 39px; border-radius: 10px; }
+    .appointment-copy { flex: 1; min-width: 0; }
+    .appointment-copy strong { display: block; font-size: 12px; margin-bottom: 4px; }
+    .appointment-copy small { display: block; font-size: 10px; color: var(--muted); }
+    .appointment-top > svg { width: 16px; height: 16px; }
+    .appointment-time { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px; background: var(--soft); padding: 8px; border-radius: 6px; font-size: 10px; }
+    .appointment-time span { display: inline-flex; align-items: center; gap: 5px; }
+    .appointment-time svg { width: 12px; height: 12px; }
+    .doctor-list { display: grid; gap: 11px; }
+    .doctor-card { display: flex; align-items: center; gap: 5px; border: 1px solid var(--line); border-radius: 12px; padding: 10px; min-width: 0; }
+    .doctor-open { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 0; text-align: left; padding: 0; border: 0; background: none; min-height: 51px; }
+    .portrait { width: 46px; height: 53px; border-radius: 10px; background: var(--ink); color: #d3e6dc; display: grid; place-items: end center; overflow: hidden; flex-shrink: 0; }
+    .portrait svg { width: 100%; height: 100%; stroke: none; }
+    .portrait.tone-2 { background: #e6eee9; color: #becfc4; }
+    .portrait.tone-3 { background: #edf0e9; color: #d2d4b9; }
+    .portrait.tone-4 { background: #e7ebed; color: #bfccd1; }
+    .doctor-copy { display: block; min-width: 0; }
+    .doctor-name { display: block; font-size: 12px; font-weight: 650; line-height: 1.4; margin-bottom: 4px; }
+    .doctor-specialty { display: block; font-size: 10px; color: var(--muted); line-height: 1.5; }
+    .doctor-clinic { display: block; font-size: 9px; color: #929a94; margin-top: 3px; }
+    .doctor-side { display: flex; align-items: center; flex-direction: column; width: 44px; flex-shrink: 0; gap: 1px; }
+    .rating { display: flex; align-items: center; gap: 3px; font-size: 9px; font-weight: 600; }
+    .rating svg { width: 10px; height: 10px; fill: currentColor; }
+    .bookmark { display: grid; place-items: center; width: 44px; min-height: 44px; padding: 0; border: 0; background: none; color: #9ca79f; }
+    .bookmark svg { width: 15px; height: 15px; }
+    .bookmark[aria-pressed="true"] { color: var(--ink); }
+    .bookmark[aria-pressed="true"] svg { fill: currentColor; }
+    .empty { text-align: center; padding: 24px 8px; font-size: 12px; line-height: 1.7; color: var(--muted); }
+    .bottom-nav { flex-shrink: 0; border-top: 1px solid var(--line); background: #fff; padding: 6px max(8px, env(safe-area-inset-right)) calc(6px + env(safe-area-inset-bottom)) max(8px, env(safe-area-inset-left)); }
+    .nav-items { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 3px; }
+    .nav-button { min-height: 44px; display: grid; place-items: center; border: 0; border-radius: 10px; background: transparent; color: #9aa69e; }
+    .nav-button svg { width: 23px; height: 23px; }
+    .nav-button[aria-pressed="true"] { color: var(--ink); background: var(--mint); }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+    dialog { max-width: min(390px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); width: 100%; border: 1px solid var(--line); border-radius: 18px; padding: 22px; color: var(--ink); }
+    dialog::backdrop { background: rgb(10 25 17 / .4); }
+    .dialog-header { display: flex; gap: 12px; justify-content: space-between; align-items: center; }
+    .dialog-header h2 { font-size: 18px; }
+    .close-dialog { border: 0; background: var(--soft); border-radius: 50%; width: 44px; height: 44px; display: grid; place-items: center; flex-shrink: 0; }
+    .dialog-copy { color: var(--muted); line-height: 1.8; font-size: 13px; white-space: pre-line; }
+    .schedule-label { margin-top: 20px; font-size: 12px; font-weight: 600; }
+    .slots { display: flex; flex-wrap: wrap; gap: 8px; }
+    .slot { min-height: 44px; padding: 9px 17px; border: 1px solid var(--line); border-radius: 9px; background: white; }
+    .slot[aria-pressed="true"] { background: var(--mint); border-color: #7aaf95; }
+    .primary-button { width: 100%; min-height: 44px; margin-top: 20px; border: 0; border-radius: 10px; background: var(--ink); color: white; }
+    [hidden] { display: none !important; }
+    @media (hover: hover) { .doctor-card:hover { border-color: #9bb5a5; } .text-button:hover { color: var(--ink); } .nav-button:hover { background: var(--soft); color: var(--ink); } }
+    @media (max-width: 340px) { .content { padding-inline: 20px; } .doctor-card { padding: 9px; } .doctor-open { gap: 9px; } .doctor-name { font-size: 11px; } .portrait { width: 41px; } }
+    @media (min-width: 600px) { .app { box-shadow: 0 0 50px rgb(0 0 0 / .05); } .content { padding-inline: 28px; } }
+  </style>
+</head>
+<body>
+  <svg class="icon-definitions" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1Z"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M7 3v4m10-4v4M8 14h2m4 0h2m-8 3h2"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M4 21v-2a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v2Z"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9Z"/></symbol>
+    <symbol id="i-bookmark" viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4Z"/></symbol>
+    <symbol id="i-cross" viewBox="0 0 24 24"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6Z"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/><path d="M3 12h4l2-4 3 8 2-4h7"/></symbol>
+    <symbol id="i-tooth" viewBox="0 0 24 24"><path d="M7 3c2 0 3 1 5 1s3-1 5-1c4 0 4 5 2 8-1 2-1 10-4 10-2 0-1-6-3-6s-1 6-3 6c-3 0-3-8-4-10C3 8 3 3 7 3Z"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-child" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 3c0 4 6 4 6 0M8 10h.01M16 10h.01M8 15q4 4 8 0"/></symbol>
+    <symbol id="i-message" viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5H3l2-5a8.5 8.5 0 1 1 16-3.5Z"/><path d="M8 10h8m-8 4h5"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+    <symbol id="portrait-woman" viewBox="0 0 48 56"><path fill="#273b31" d="M12 32V17a12 12 0 0 1 24 0v15Z"/><path fill="currentColor" d="M3 56V43q0-11 21-11t21 11v13Z"/><path fill="#efc9a8" d="M19 28h10v9l-5 5-5-5Z"/><ellipse fill="#efc9a8" cx="24" cy="21" rx="8" ry="10"/><path fill="#273b31" d="M15 21V16q0-13 12-10 10 2 7 15l-6-9q-5 7-13 9Z"/><path fill="#fff" d="m16 33 8 9 8-9 5 23H11Z"/><path fill="#a4bfb0" d="m24 42 3 14h-6Z"/></symbol>
+    <symbol id="portrait-man" viewBox="0 0 48 56"><path fill="currentColor" d="M3 56V43q0-11 21-11t21 11v13Z"/><path fill="#d4a883" d="M19 28h10v9l-5 5-5-5Z"/><ellipse fill="#d4a883" cx="24" cy="21" rx="8" ry="10"/><path fill="#273b31" d="M15 20V13q0-8 9-8t9 8v7l-5-8q-4 4-13 3Z"/><path fill="#fff" d="m16 33 8 9 8-9 5 23H11Z"/><path fill="#a4bfb0" d="m24 42 3 14h-6Z"/></symbol>
+  </svg>
+  <div class="app">
+    <main class="content" id="main-content">
+      <header class="header">
+        <div><p class="eyebrow">Halo, Alex. Semoga sehat selalu!</p><h1>Temukan dokter</h1></div>
+        <button class="avatar" type="button" aria-label="Buka profil Alex" data-action="profile">AP</button>
+      </header>
+      <label class="search">
+        <svg aria-hidden="true"><use href="#i-search"/></svg><span class="sr-only">Cari dokter atau keluhan</span>
+        <input id="search" type="search" placeholder="Cari dokter atau keluhan…" autocomplete="off" aria-controls="doctor-list">
+      </label>
+      <div class="categories" role="group" aria-label="Kategori kesehatan">
+        <button class="category" type="button" data-filter="all" aria-pressed="true"><span class="category-icon"><svg aria-hidden="true"><use href="#i-cross"/></svg></span><span class="category-label">Semua</span></button>
+        <button class="category" type="button" data-filter="heart" aria-pressed="false"><span class="category-icon"><svg aria-hidden="true"><use href="#i-heart"/></svg></span><span class="category-label">Jantung</span></button>
+        <button class="category" type="button" data-filter="dental" aria-pressed="false"><span class="category-icon"><svg aria-hidden="true"><use href="#i-tooth"/></svg></span><span class="category-label">Gigi</span></button>
+        <button class="category" type="button" data-filter="eye" aria-pressed="false"><span class="category-icon"><svg aria-hidden="true"><use href="#i-eye"/></svg></span><span class="category-label">Mata</span></button>
+        <button class="category" type="button" data-filter="child" aria-pressed="false"><span class="category-icon"><svg aria-hidden="true"><use href="#i-child"/></svg></span><span class="category-label">Anak</span></button>
+      </div>
+      <section class="upcoming" aria-labelledby="upcoming-title">
+        <div class="section-heading"><h2 id="upcoming-title">Konsultasi mendatang</h2><button class="text-button" id="view-appointment" type="button">Detail <svg aria-hidden="true"><use href="#i-arrow"/></svg></button></div>
+        <button class="appointment-card" id="appointment-card" type="button" aria-label="Lihat jadwal konsultasi mendatang"></button>
+      </section>
+      <section aria-labelledby="doctors-title" id="doctors-section">
+        <div class="section-heading"><h2 id="doctors-title" tabindex="-1">Dokter populer</h2><button class="text-button" id="view-all" type="button">Lihat semua <svg aria-hidden="true"><use href="#i-arrow"/></svg></button></div>
+        <div class="doctor-list" id="doctor-list"></div>
+        <p class="empty" id="empty" hidden>Dokter belum ditemukan.<br>Coba nama, keluhan, atau kategori lain.</p>
+      </section>
+    </main>
+    <nav class="bottom-nav" aria-label="Navigasi utama">
+      <div class="nav-items">
+        <button class="nav-button" type="button" data-nav="home" aria-label="Beranda" aria-pressed="true"><svg aria-hidden="true"><use href="#i-home"/></svg></button>
+        <button class="nav-button" type="button" data-nav="search" aria-label="Cari dokter" aria-pressed="false"><svg aria-hidden="true"><use href="#i-search"/></svg></button>
+        <button class="nav-button" type="button" data-nav="appointments" aria-label="Jadwal konsultasi" aria-haspopup="dialog"><svg aria-hidden="true"><use href="#i-calendar"/></svg></button>
+        <button class="nav-button" type="button" data-nav="messages" aria-label="Pesan" aria-haspopup="dialog"><svg aria-hidden="true"><use href="#i-message"/></svg></button>
+        <button class="nav-button" type="button" data-nav="profile" aria-label="Profil" aria-haspopup="dialog"><svg aria-hidden="true"><use href="#i-user"/></svg></button>
+      </div>
+    </nav>
+  </div>
+  <p class="sr-only" id="status" role="status" aria-live="polite" aria-atomic="true"></p>
+  <dialog id="detail-dialog" aria-labelledby="dialog-title" aria-describedby="dialog-copy">
+    <div class="dialog-header"><h2 id="dialog-title"></h2><button class="close-dialog" type="button" aria-label="Tutup dialog"><svg aria-hidden="true"><use href="#i-close"/></svg></button></div>
+    <p class="dialog-copy" id="dialog-copy"></p>
+    <div id="booking" hidden><p class="schedule-label">Selasa, 6 Oktober 2026</p><div class="slots" role="group" aria-label="Pilih jam konsultasi"><button class="slot" type="button" data-time="09.00" aria-pressed="true">09.00</button><button class="slot" type="button" data-time="11.00" aria-pressed="false">11.00</button><button class="slot" type="button" data-time="14.00" aria-pressed="false">14.00</button></div><button class="primary-button" id="choose-appointment" type="button">Pilih jadwal</button></div>
+  </dialog>
+  <script>
+    // Fictional doctors, ratings, messages, and schedules for a local UI demo.
+    // Scheduling changes only this preview; it does not book a real appointment.
+    const doctors = [
+      { id: 1, name: 'dr. Maya Putri', specialty: 'Spesialis Jantung', group: 'heart', clinic: 'Klinik Sehat Sentosa', rating: '4.9', reviews: 128, experience: 12, portrait: 'woman', saved: true, keywords: 'jantung dada kardiologi' },
+      { id: 2, name: 'drg. Arif Pratama', specialty: 'Dokter Gigi', group: 'dental', clinic: 'Klinik Senyum Sehat', rating: '4.8', reviews: 96, experience: 8, portrait: 'man', saved: false, keywords: 'gigi gusi dental' },
+      { id: 3, name: 'dr. Sari Wulandari', specialty: 'Spesialis Mata', group: 'eye', clinic: 'Klinik Mata Cerah', rating: '4.9', reviews: 112, experience: 10, portrait: 'woman', saved: false, keywords: 'mata penglihatan' },
+      { id: 4, name: 'dr. Bima Saputra', specialty: 'Spesialis Anak', group: 'child', clinic: 'Klinik Tumbuh Bersama', rating: '4.8', reviews: 84, experience: 9, portrait: 'man', saved: false, keywords: 'anak bayi demam' }
+    ];
+    const search = document.getElementById('search');
+    const list = document.getElementById('doctor-list');
+    const dialog = document.getElementById('detail-dialog');
+    const status = document.getElementById('status');
+    let filter = 'all';
+    let selectedDoctor = doctors[0];
+    let selectedTime = '09.00';
+    let appointment = { doctor: doctors[0], time: '09.00' };
+    function portrait(doc) { return `<span class="portrait tone-${doc.id}"><svg viewBox="0 0 48 56" aria-hidden="true"><use href="#portrait-${doc.portrait}"/></svg></span>`; }
+    function openDialog(title, copy, booking = false) {
+      document.getElementById('dialog-title').textContent = title;
+      document.getElementById('dialog-copy').textContent = copy;
+      document.getElementById('booking').hidden = !booking;
+      dialog.showModal();
+    }
+    function openProfile() { openDialog('Profil pasien', 'Alex Pratama\n\nDokter tersimpan\n' + (doctors.filter(doc => doc.saved).map(doc => doc.name).join('\n') || 'Belum ada dokter tersimpan.')); }
+    function openDoctor(doc) {
+      selectedDoctor = doc;
+      selectedTime = '09.00';
+      document.querySelectorAll('[data-time]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.time === selectedTime)));
+      openDialog(doc.name, `${doc.specialty}\n${doc.clinic}\n\n${doc.experience} tahun pengalaman\n★ ${doc.rating} · ${doc.reviews} ulasan\n\nPilih waktu konsultasi yang sesuai untuk Anda.`, true);
+    }
+    function openAppointment() { openDialog('Jadwal konsultasi', `${appointment.doctor.name}\n${appointment.doctor.specialty}\n\nSelasa, 6 Oktober 2026\n${appointment.time} WIB · Konsultasi di klinik\n${appointment.doctor.clinic}`); }
+    function renderAppointment() {
+      const doc = appointment.doctor;
+      const card = document.getElementById('appointment-card');
+      card.innerHTML = `<span class="appointment-top">${portrait(doc)}<span class="appointment-copy"><strong></strong><small></small></span><svg aria-hidden="true"><use href="#i-arrow"/></svg></span><span class="appointment-time"><span><svg aria-hidden="true"><use href="#i-calendar"/></svg>Sel, 6 Okt 2026</span><span class="appointment-hour"><svg aria-hidden="true"><use href="#i-clock"/></svg></span></span>`;
+      card.querySelector('strong').textContent = doc.name;
+      card.querySelector('small').textContent = doc.specialty;
+      card.querySelector('.appointment-hour').append(`${appointment.time} WIB`);
+    }
+    function renderDoctors() {
+      const query = search.value.trim().toLocaleLowerCase('id');
+      const visible = doctors.filter(doc => (filter === 'all' || doc.group === filter) && `${doc.name} ${doc.specialty} ${doc.clinic} ${doc.keywords}`.toLocaleLowerCase('id').includes(query));
+      list.replaceChildren();
+      for (const doc of visible) {
+        const card = document.createElement('article');
+        card.className = 'doctor-card';
+        card.innerHTML = `<button class="doctor-open" type="button">${portrait(doc)}<span class="doctor-copy"><span class="doctor-name"></span><span class="doctor-specialty"></span><span class="doctor-clinic"></span></span></button><span class="doctor-side"><span class="rating"><svg aria-hidden="true"><use href="#i-star"/></svg><span></span></span><button class="bookmark" type="button"><svg aria-hidden="true"><use href="#i-bookmark"/></svg></button></span>`;
+        card.querySelector('.doctor-name').textContent = doc.name;
+        card.querySelector('.doctor-specialty').textContent = doc.specialty;
+        card.querySelector('.doctor-clinic').textContent = doc.clinic;
+        card.querySelector('.rating span').textContent = doc.rating;
+        card.querySelector('.rating').setAttribute('aria-label', `Rating ${doc.rating} dari 5`);
+        card.querySelector('.doctor-open').addEventListener('click', () => openDoctor(doc));
+        const bookmark = card.querySelector('.bookmark');
+        bookmark.setAttribute('aria-label', `Simpan dokter: ${doc.name}`);
+        bookmark.setAttribute('aria-pressed', String(doc.saved));
+        bookmark.addEventListener('click', () => { doc.saved = !doc.saved; bookmark.setAttribute('aria-pressed', String(doc.saved)); status.textContent = `${doc.name} ${doc.saved ? 'disimpan' : 'dihapus dari daftar tersimpan'}`; });
+        list.append(card);
+      }
+      document.getElementById('empty').hidden = visible.length > 0;
+      status.textContent = `${visible.length} dokter ditampilkan`;
+    }
+    function selectNav(name) { document.querySelectorAll('[data-nav][aria-pressed]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.nav === name))); }
+    function selectFilter(value) { filter = value; document.querySelectorAll('[data-filter]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.filter === filter))); renderDoctors(); }
+    search.addEventListener('input', () => { selectNav('search'); renderDoctors(); });
+    document.querySelectorAll('[data-filter]').forEach(button => button.addEventListener('click', () => { selectNav('search'); selectFilter(button.dataset.filter); }));
+    document.querySelector('[data-action="profile"]').addEventListener('click', openProfile);
+    document.getElementById('view-appointment').addEventListener('click', openAppointment);
+    document.getElementById('appointment-card').addEventListener('click', openAppointment);
+    document.getElementById('view-all').addEventListener('click', () => { search.value = ''; selectFilter('all'); selectNav('search'); document.getElementById('doctors-title').focus(); document.getElementById('doctors-section').scrollIntoView({ block: 'start' }); });
+    document.querySelectorAll('[data-time]').forEach(button => button.addEventListener('click', () => { selectedTime = button.dataset.time; document.querySelectorAll('[data-time]').forEach(slot => slot.setAttribute('aria-pressed', String(slot === button))); }));
+    document.getElementById('choose-appointment').addEventListener('click', () => {
+      appointment = { doctor: selectedDoctor, time: selectedTime };
+      renderAppointment();
+      dialog.close();
+      document.getElementById('main-content').scrollTop = 0;
+      document.getElementById('appointment-card').focus();
+      status.textContent = `Jadwal pilihan: ${selectedDoctor.name}, 6 Oktober, pukul ${selectedTime}`;
+    });
+    document.querySelectorAll('[data-nav]').forEach(button => button.addEventListener('click', () => {
+      const name = button.dataset.nav;
+      if (name === 'profile') { openProfile(); return; }
+      if (name === 'appointments') { openAppointment(); return; }
+      if (name === 'messages') { openDialog('Pesan', 'Klinik Sehat Sentosa\nPengingat konsultasi\n\nHalo Alex, jadwal konsultasi Anda dapat dilihat pada menu Jadwal. Silakan datang 15 menit sebelum waktu konsultasi.'); return; }
+      selectNav(name);
+      if (name === 'search') { search.focus(); return; }
+      search.value = ''; selectFilter('all'); document.getElementById('main-content').scrollTop = 0;
+    }));
+    document.querySelector('.close-dialog').addEventListener('click', () => dialog.close());
+    renderAppointment();
+    renderDoctors();
+  </script>
+</body>
+</html>

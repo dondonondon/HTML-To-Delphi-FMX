@@ -21,7 +21,9 @@ hex in a form. Use Delphi-generated serialized data when embedding a style.
 `TRectangle`, `TLayout`, and `TImage` are primitives/layout controls, not equivalent
 `StyleLookup` consumers. Verify the concrete target class and published properties.
 
-To share a card background through StyleBook without deep application nesting:
+Use a sibling `TRectangle` with design-time properties for a card surface that
+appears in only one place. When the same surface is used by multiple identified
+consumers and needs one shared StyleBook resource, use a styled `TPanel`:
 
 ```text
 TFrameCustomerCard
@@ -31,9 +33,10 @@ TFrameCustomerCard
 └── SubtitleLabel: TLabel
 ```
 
-The rectangle belongs inside the panel's style resource. Foreground controls do not
-become children of the panel. A one-off primitive background may instead carry
-properties in `.fmx`, but record that as a design-time property mapping, not a style.
+The rectangle belongs inside the shared panel's style resource. Foreground
+controls do not become children of the panel. A single-use `TRectangle` carries
+its fill, stroke, radius and effects in `.fmx`; return those values as a
+design-time property mapping rather than adding an unused style resource.
 Do not add custom component classes only to give a rectangle a style.
 
 ## Preserve the target's actual contract
@@ -56,14 +59,26 @@ place the glyph and text with enough space at the smallest button width. Merely
 setting `ImageIndex` on a button whose style has no glyph part does not establish
 that the icon will render. Keep the glyph inside the style instead of requiring a
 separate application-level icon overlay for a single button.
+An icon-only button style should center `glyphstyle` when the source centers the
+icon; a left-aligned glyph plus an empty client-aligned text part does not do so.
+Reuse that style across icon-only buttons with the same surface and states, even
+when their icons, actions or sizes differ. Use separate center/client or surface
+variants only for an actual layout or visual-state difference. Preserve any
+text part required by the target control's style contract.
 
 Do not recursively embed styled controls with the same StyleLookup inside their own
 resources. Prefer primitives, layouts, text and verified effects for style internals.
 The application's flat-hierarchy policy does not forbid nesting required inside a
 style contract; that internal tree is separate from application form/frame composition.
 
-Check text `StyledSettings` deliberately. Do not accidentally override a shared style
-with per-control font assignments, and do not indiscriminately clear all styled settings.
+Check text `StyledSettings` deliberately. A flag present in the set takes its
+value from the style. When a control owns a local text property, remove only
+the matching flag: `Family` for `Font.Family`, `Size` for `Font.Size`, `Style`
+for `Font.Style`, and `FontColor` for `FontColor`. `Other` jointly covers
+horizontal/vertical alignment, trimming and word wrap. Keep the remaining
+style-owned flags; use `StyledSettings=[]` only when all text settings are
+instance-owned. Do not create a typography-only style and then disable all
+its values on the consuming `TLabel` or button.
 When a platform supports native `ControlType`, verify whether the custom style applies;
 use the styled presentation for controls whose custom StyleBook appearance is required.
 

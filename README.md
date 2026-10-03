@@ -1,150 +1,227 @@
-# HTML to Delphi FMX
+# HTML to Delphi FMX — Version 2
 
 ![Delphi FMX](https://img.shields.io/badge/Delphi-FireMonkey-E62431?style=flat-square&logo=embarcadero&logoColor=white)
-![Agent Skills](https://img.shields.io/badge/Agent%20Skills-3-1F6FEB?style=flat-square)
-![Workflow](https://img.shields.io/badge/Workflow-Map%20%7C%20Style%20%7C%20Convert-0E8A16?style=flat-square)
+![Version](https://img.shields.io/badge/Version-2.0.0-007F79?style=flat-square)
+![Agent Skills](https://img.shields.io/badge/Agent%20Skills-6-1F6FEB?style=flat-square)
 ![License](https://img.shields.io/badge/License-MIT-F59E0B?style=flat-square)
 
 English | [Bahasa Indonesia](README-ID.md)
 
-Turn HTML/CSS designs into **native, editable Delphi FireMonkey UI** with three complementary agent skills. The workflow plans the component hierarchy, creates FMX style resources, and implements `.fmx`/`.pas` frames in an existing Delphi project.
+Create **native, Designer-editable Delphi FireMonkey UI** from HTML/CSS, screenshots, wireframes, or a written brief. Version 2 expands the original HTML conversion workflow into six complementary agent skills, including direct UI creation and review of existing FMX screens.
 
-This repository contains skill instructions and a documented dashboard experiment. It is not an automatic transpiler or a complete Delphi application; the target project and its toolchain determine the final implementation and validation.
+The skills work inside your Delphi project: they inspect its conventions, map the component hierarchy, integrate native styles, and produce editable `.fmx`/`.pas` files. This repository provides the skills, example inputs, and recorded results; your target project supplies the application and Delphi toolchain.
 
-## Skills
+**Explore the V2 study:** [English website](docs/result/VERSION.2.0.0/static-website/index.html) · [English presentation](docs/result/VERSION.2.0.0/presentation/HTML-FMX-V2-Healthcare-EN.pptx) · [Indonesian presentation](docs/result/VERSION.2.0.0/presentation/HTML-FMX-V2-Healthcare.pptx) · [Prompt guide](PROMPTS.md)
 
-| Skill | Responsibility | Main output |
+**Previous version:** [V1 English archive](docs/result/VERSION.1.0.0/README.md) · [V1 Indonesian archive](docs/result/VERSION.1.0.0/README-ID.md)
+
+## Why these skills exist
+
+Mobile FMX interfaces need layout decisions suited to small screens, scrolling content, and touch navigation. Desktop design habits carried over from VCL can leave those decisions unresolved. Mapping every HTML wrapper to another FMX container can also produce a component tree that is difficult to understand and maintain.
+
+These workflows give each page region, section, card, and container a concrete purpose. Fixed controls stay editable in the RAD Studio Designer, while changing records use reusable cards. Project design guidance keeps colors, typography, spacing, and styles consistent between screens.
+
+## What changed in V2
+
+| Area | Version 1 | Version 2 |
 | --- | --- | --- |
-| [`html-to-fmx-mapping`](.agents/skills/html-to-fmx-mapping/SKILL.md) | Map HTML regions to FMX sections, cards, fixed grids, and variable lists | Component hierarchy in Markdown |
-| [`css-to-fmx-style`](.agents/skills/css-to-fmx-style/SKILL.md) | Map CSS roles to compatible native FMX style resources | `.style` and style mapping |
-| [`html-to-fmx`](.agents/skills/html-to-fmx/SKILL.md) | Build the mapped UI as editable FMX frames and integrate its styles | `.fmx`/`.pas` pairs, reusable cards, and mappings |
+| Input | HTML/CSS, including Google Stitch exports | HTML/CSS, screenshots, wireframes, and written briefs |
+| Skills | HTML mapping, CSS styling, and HTML conversion | The original three plus screenshot mapping, direct creation, and UI review |
+| Study | NovaPOS dashboard across several model attempts | One healthcare wireframe through four workflows using the same agent model |
+| Guidance | Native component mapping and style conversion | Refined hierarchy, design continuity, style ownership, list/card binding, and verification guidance |
 
-`html-to-fmx` runs the mapping and styling workflows as sibling dependencies. Keep **all three skill directories together**. Fixed visual structure belongs in design-time `.fmx` resources; variable records use reusable `TFrame` cards inside `TListBoxItem` instances.
+## Available skills
 
-## Why use these skills?
+| Skill | Use it for | Main output |
+| --- | --- | --- |
+| [`html-to-fmx-mapping`](.agents/skills/html-to-fmx-mapping/SKILL.md) | Planning the component hierarchy from HTML/CSS | Markdown UI map |
+| [`screenshot-to-fmx-mapping`](.agents/skills/screenshot-to-fmx-mapping/SKILL.md) | Planning from a screenshot or wireframe image | Markdown UI map |
+| [`css-to-fmx-style`](.agents/skills/css-to-fmx-style/SKILL.md) | Converting CSS roles into compatible native FMX resources | `.style` and style mapping in standalone mode |
+| [`html-to-fmx`](.agents/skills/html-to-fmx/SKILL.md) | Implementing an HTML/CSS design as native FMX | `.fmx`/`.pas` pages and reusable cards, UI/style mappings |
+| [`create-fmx-ui`](.agents/skills/create-fmx-ui/SKILL.md) | Creating a new screen from a brief, wireframe, or screenshot | `.fmx`/`.pas` pages and reusable cards, project-native appearance and mapping |
+| [`review-fmx-ui`](.agents/skills/review-fmx-ui/SKILL.md) | Reviewing, fixing, or enhancing an existing FMX screen | Findings, or authorized corrections within the established hierarchy |
 
-A direct HTML-to-FMX conversion can turn HTML wrapper elements into many layers of FMX containers. These skills map the page into meaningful sections and cards, then add a container only when it serves a layout, grouping, or other concrete purpose. The result is a shallower component hierarchy that is easier to inspect and edit in the RAD Studio designer, while preserving the sections and cards the UI needs.
+Keep **all six skill directories together**, including their supporting files. `html-to-fmx` runs HTML mapping and CSS styling; `create-fmx-ui` runs screenshot mapping for image input and consumes shared FMX references. `review-fmx-ui` uses the existing screen and shared references to review or change it in place.
+
+The current skill name is **`create-fmx-ui`**. The healthcare experiment originally referred to it as `create-delphi-fmx-ui`.
+
+## Choose a workflow
+
+| Your source or task | Starting skill |
+| --- | --- |
+| HTML/CSS or a Google Stitch HTML export | `html-to-fmx` |
+| Wireframe, screenshot, or written screen brief | `create-fmx-ui` |
+| A structure plan before implementation | `html-to-fmx-mapping` or `screenshot-to-fmx-mapping` |
+| CSS-to-FMX style conversion only | `css-to-fmx-style` |
+| An existing `.fmx`/`.pas` screen to inspect or improve | `review-fmx-ui` |
+
+A standalone mapping request produces Markdown. A creation/conversion request continues through implementation and the checks available in the target environment. With `review-fmx-ui`, ask for a **review** to receive findings, **refine/fix** to correct evidenced defects, or **enhance** to request visual or UX improvements.
+
+### Component and style ownership
+
+The shared pattern separates fixed page structure from variable data:
+
+```text
+Page / TFrame
+├─ Header
+├─ Scroll content
+│  ├─ Search and fixed categories
+│  ├─ Upcoming appointment section
+│  └─ Doctors section / TListBox
+│     └─ TListBoxItem                 runtime record
+│        └─ DoctorCard / TFrame      reusable .fmx + .pas
+└─ Bottom navigation
+```
+
+Fixed page and card controls are serialized in `.fmx`; Pascal binds data and creates variable list items. Sections, cards, and fixed grids retain meaningful ownership. Row actions, input routing, and list geometry follow the skill guidance and the target project's contracts.
+
+Creation and conversion reuse the target application's `DESIGN.md` or equivalent, or establish a concise guide when one is missing. `create-fmx-ui` defaults to the main form's design-time StyleBook and traces the effective runtime style loader. Request an external `.style` destination explicitly when that is the intended output. Review/refinement preserves the established component hierarchy and behavior unless a structural change is explicitly requested.
 
 ## Getting started
 
-Codex discovers repository skills in `.agents/skills` from the working directory up to the repository root. Open this repository in Codex to inspect the skills, or copy the three directories into the `.agents/skills/` folder of the Delphi project where you will use them. See the [official Codex skill documentation](https://learn.chatgpt.com/docs/build-skills).
-
-From this repository, a PowerShell copy looks like this:
+Copy the complete six-skill package from `.agents/skills/` into the target Delphi project's `.agents/skills/` directory. From this repository:
 
 ```powershell
-$skillDest = 'D:\Path\To\DelphiProject\.agents\skills'
-New-Item -ItemType Directory -Force -Path $skillDest | Out-Null
-Copy-Item -Path .\.agents\skills\* -Destination $skillDest -Recurse -Force
+$fmxSkillDest = 'D:\Path\To\DelphiProject\.agents\skills'
+New-Item -ItemType Directory -Force -Path $fmxSkillDest | Out-Null
+Copy-Item -Path .\.agents\skills\* -Destination $fmxSkillDest -Recurse -Force
 ```
 
-Start Codex in the target project and invoke `$html-to-fmx`, `$html-to-fmx-mapping`, or `$css-to-fmx-style`. If a newly copied skill is missing from `/skills`, restart the Codex session. For the included dashboard demo, copy [`docs/ui-dashboard.html`](docs/ui-dashboard.html) into the target project or point the prompt to its actual location.
+Open the target project in Codex and select the desired skill. If newly copied skills are not available in the session, restart the session. Adjust every source/output path to your target project.
+
+### Create from a wireframe
+
+Copy the [healthcare wireframe](docs/result/VERSION.2.0.0/wireframe.png) to `docs/ui/wireframe.png` in your target project, or use its actual location in the prompt.
+
+```text
+$create-fmx-ui
+
+Create a Healthcare Appointment App page from docs/ui/wireframe.png.
+Include doctor/symptom search, health categories, an upcoming appointment,
+a popular doctor list, and bottom navigation with messages and a profile.
+
+Inspect the target Delphi project and its DESIGN.md or equivalent.
+Keep the UI native and Designer-editable. Use a reusable doctor-card
+TFrame for variable records. Follow the existing style and navigation
+contracts, and report the build/Designer/runtime checks actually run.
+```
+
+### Convert HTML/CSS
+
+Use the [NovaPOS HTML](docs/ui-dashboard.html), the [agent-generated healthcare HTML](docs/ui-wireframe.html), or your own exported page. Copy the source and its assets into the target project, or provide their actual paths.
 
 ```text
 $html-to-fmx
 
-Convert docs/ui-dashboard.html into a native FMX dashboard frame.
-Inspect the existing Delphi project and StyleBook first. Save the UI and
-style mappings under docs/fmx-mapping/. Keep fixed controls editable in
-.fmx and use a reusable TFrame card for variable transaction records.
-Build and inspect the result when the target toolchain is available.
+Convert docs/ui-dashboard.html into a native Delphi FMX dashboard page.
+Inspect the target project, its design guide, assets, and effective
+StyleBook first. Execute the mapping and styling workflows. Keep fixed
+controls editable in .fmx and use reusable TFrame cards for variable
+records. Integrate the styles and report the checks actually run.
 ```
 
-See [PROMPTS.md](PROMPTS.md) for focused prompts covering mapping, styling, full conversion, and refinement. Output paths in these examples belong to the **target project**, not to this skill repository.
+[PROMPTS.md](PROMPTS.md) includes all six skill entrypoints, review/refinement examples, and an explicit demo-data follow-up. The [healthcare website](docs/result/VERSION.2.0.0/static-website/index.html#prompts) provides the shared brief and the four experiment routes, with copy buttons. Those are refined guide prompts based on the author's description, rather than verbatim records of every original prompt.
 
-## Icons and native FMX scope
+## V2 study: Healthcare Appointment App
 
-The icons in the source HTML are sufficient as a starting point. For a better fit, choose or source icons that suit your own application's visual style. If your Delphi project already uses Skia, you can also replace them with SVG icons through that integration. This repository's target is **pure Delphi FMX**: the conversion workflow should work with native FMX components and should not require Skia.
+The input was a rough hand-drawn wireframe for patients to find doctors, view upcoming consultations, explore health categories, and communicate with healthcare providers. It specifies search, categories, an upcoming appointment, a popular doctor list, and bottom navigation.
 
-## Dashboard experiment
+<img src="docs/result/VERSION.2.0.0/wireframe.png" width="220" alt="Original hand-drawn healthcare appointment wireframe">
 
-The NovaPOS dashboard UI was generated with **Google Stitch** and exported as HTML code. The exported test input is [`docs/ui-dashboard.html`](docs/ui-dashboard.html). This is its browser reference:
+All four agent workflows used **GPT-6.1 Sol with High reasoning**, the same wireframe, and the same healthcare brief. This study compares workflows. Google Stitch's design generation is an additional stage in Method 1.
 
-<img src="docs/result/UI-HTML.png" width="320" alt="NovaPOS dashboard rendered from the source HTML in a browser">
-
-The following example shows the GPT-6 Sol Medium designer structure and application run before and after a GPT-6 Sol High refinement:
-
-| RAD Studio designer | Initial run | Run after refinement |
-| --- | --- | --- |
-| <img src="docs/result/image-design-time/SSDT-GPT-6%20Sol%20Medium.png" width="260" alt="Editable dashboard frame and component hierarchy in RAD Studio"> | <img src="docs/result/image-run/before-enhance/SS-GPT-6%20Sol%20Medium.png" width="230" alt="Initial GPT-6 Sol Medium application run"> | <img src="docs/result/image-run/after-enhance/SSAF-GPT-6%20Sol%20Medium.png" width="230" alt="Application run after GPT-6 Sol High refinement"> |
-
-### All attempts
-
-The model attempts in this experiment were run concurrently. When the author later retested **GPT-6 Sol Light** and **GPT-5.6 Terra High** one model at a time, both produced better results than in the concurrent runs. The agents may have conflicted while accessing the same files, but this has not been confirmed. Treat the screenshots and comparisons as records of those particular runs, not a fully reliable model ranking. You can retest sequentially with the models you normally use.
-
-The desktop archive contains 10 designer captures, 10 initial run captures, and 8 run captures after refinement. The eight refined GPT results used GPT-6 Sol High. The DeepSeek results are **pure DeepSeek with a Codex harness**; neither has a GPT refinement image.
-
-| Attempt | Time noted | Designer structure | Initial run | After refinement |
-| --- | ---: | --- | --- | --- |
-| GPT-5.6 Terra Light | 7m 21s | [View](docs/result/image-design-time/SSDT-GPT-5.6%20Terra%20Light.png) | [View](docs/result/image-run/before-enhance/SS-GPT-5.6%20Terra%20Light.png) | [View](docs/result/image-run/after-enhance/SSAF-GPT-5.6%20Terra%20Light.png) |
-| GPT-5.6 Terra Medium | 12m 42s | [View](docs/result/image-design-time/SSDT-GPT-5.6%20Terra%20Medium.png) | [View](docs/result/image-run/before-enhance/SS-GPT-5.6%20Terra%20Medium.png) | [View](docs/result/image-run/after-enhance/SSAF-GPT-5.6%20Terra%20Medium.png) |
-| GPT-5.6 Terra High | 13m 44s | [View](docs/result/image-design-time/SSDT-GPT-5.6%20Terra%20High.png) | [View](docs/result/image-run/before-enhance/SS-GPT-5.6%20Terra%20High.png) | [View](docs/result/image-run/after-enhance/SSAF-GPT-5.6%20Terra%20High.png) |
-| GPT-6 Luna High | 21m 34s | [View](docs/result/image-design-time/SSDT-GPT-6%20Luna%20High.png) | [View](docs/result/image-run/before-enhance/SS-GPT-6%20Luna%20High.png) | [View](docs/result/image-run/after-enhance/SSAF-GPT-6%20Luna%20High.png) |
-| GPT-6 Sol Light | 5m 34s | [View](docs/result/image-design-time/SSDT-GPT-6%20Sol%20Light.png) | [View](docs/result/image-run/before-enhance/SS-GPT-6%20Sol%20Light.png) | [View](docs/result/image-run/after-enhance/SSAF-GPT-6%20Sol%20Light.png) |
-| GPT-6 Sol Medium | 13m 57s | [View](docs/result/image-design-time/SSDT-GPT-6%20Sol%20Medium.png) | [View](docs/result/image-run/before-enhance/SS-GPT-6%20Sol%20Medium.png) | [View](docs/result/image-run/after-enhance/SSAF-GPT-6%20Sol%20Medium.png) |
-| GPT-6 Astra Light | 9m 48s | [View](docs/result/image-design-time/SSDT-GPT-6%20Astra%20Light.png) | [View](docs/result/image-run/before-enhance/SS-GPT-6%20Astra%20Light.png) | [View](docs/result/image-run/after-enhance/SSAF-GPT-6%20Astra%20Light.png) |
-| GPT-6 Astra Medium | 12m 52s | [View](docs/result/image-design-time/SSDT-GPT-6%20Astra%20Medium.png) | [View](docs/result/image-run/before-enhance/SS-GPT-6%20Astra%20Medium.png) | [View](docs/result/image-run/after-enhance/SSAF-GPT-6%20Astra%20Medium.png) |
-| DeepSeek V4 Pro High | 36m 29s | [View](docs/result/image-design-time/SSDT-Deepseek-V4-Pro%20High.png) | [View](docs/result/image-run/before-enhance/SS-Deepseek-v4-Pro%20High.png) | Pure DeepSeek |
-| DeepSeek V4.1 Flash High | 24m 30s | [View](docs/result/image-design-time/SSDT-Deepseek-V4.1-Flash%20High.png) | [View](docs/result/image-run/before-enhance/SS-Deepseek-v4.1-Flash%20High.png) | Pure DeepSeek |
-
-### Android runs
-
-The archive also contains 10 Android run screenshots, one for each attempt after its final workflow. The GPT variants had a GPT-6 Sol High refinement; the two DeepSeek captures remain pure DeepSeek despite the `mobile-after-enhance` folder name.
-
-| Best visual result: GPT-6 Astra Light + GPT-6 Sol High | Best value: GPT-6 Sol Medium + GPT-6 Sol High |
+| Method | Workflow |
 | --- | --- |
-| <img src="docs/result/image-run/mobile-after-enhance/Mobile-GPT-6%20Astra%20Light.jpg" width="260" alt="Android run of GPT-6 Astra Light after GPT-6 Sol High refinement"> | <img src="docs/result/image-run/mobile-after-enhance/Mobile-GPT-6%20Sol%20Medium.jpg" width="260" alt="Android run of GPT-6 Sol Medium after GPT-6 Sol High refinement"> |
+| 1 | Google Stitch MCP → HTML export → `html-to-fmx` |
+| 2 | Wireframe + brief → `create-fmx-ui` |
+| 3 | `screenshot-to-fmx-mapping` → separate mapping document → `create-fmx-ui` |
+| 4 | Agent-generated HTML/CSS → `html-to-fmx` |
 
-| Attempt | Android screenshot | Attempt | Android screenshot |
+Method 2 still performs screenshot mapping internally. Method 3 stages that work separately before implementation.
+
+### Runtime results
+
+The captures include the follow-up card implementation and fictional dummy data. Some application labels remain in Indonesian.
+
+| 1. Google Stitch + HTML | 2. Direct UI creation | 3. Separate mapping | 4. Agent-generated HTML |
 | --- | --- | --- | --- |
-| GPT-5.6 Terra Light | [View](docs/result/image-run/mobile-after-enhance/Mobile-GPT-5.6%20Terra%20Light.jpg) | GPT-5.6 Terra Medium | [View](docs/result/image-run/mobile-after-enhance/Mobile-GPT-5.6%20Terra%20Medium.jpg) |
-| GPT-5.6 Terra High | [View](docs/result/image-run/mobile-after-enhance/Mobile-GPT-5.6%20Terra%20High.jpg) | GPT-6 Luna High | [View](docs/result/image-run/mobile-after-enhance/Mobile-GPT-6%20Luna%20High.jpg) |
-| GPT-6 Sol Light | [View](docs/result/image-run/mobile-after-enhance/Mobile-GPT-6%20Sol%20Light.jpg) | GPT-6 Sol Medium | [View](docs/result/image-run/mobile-after-enhance/Mobile-GPT-6%20Sol%20Medium.jpg) |
-| GPT-6 Astra Light | [View](docs/result/image-run/mobile-after-enhance/Mobile-GPT-6%20Astra%20Light.jpg) | GPT-6 Astra Medium | [View](docs/result/image-run/mobile-after-enhance/Mobile-GPT-6%20Astra%20Medium.jpg) |
-| DeepSeek V4 Pro High | [View](docs/result/image-run/mobile-after-enhance/Mobile-Deepseek-V4-Pro%20High.jpg) | DeepSeek V4.1 Flash High | [View](docs/result/image-run/mobile-after-enhance/Mobile-Deepseek-V4.1-Flash%20High.jpg) |
+| <img src="docs/result/VERSION.2.0.0/run-time/MCPSTITCHHTMLHTMLTOFMX.png" width="220" alt="Method 1 healthcare runtime result"> | <img src="docs/result/VERSION.2.0.0/run-time/CREATEUI.png" width="220" alt="Method 2 healthcare runtime result"> | <img src="docs/result/VERSION.2.0.0/run-time/MAPPINGCREATEUI.png" width="220" alt="Method 3 healthcare runtime result"> | <img src="docs/result/VERSION.2.0.0/run-time/HTMLHTMLTOFMX.png" width="220" alt="Method 4 healthcare runtime result"> |
+| [Designer hierarchy](docs/result/VERSION.2.0.0/design-time/SS-STRUKTUR-HIERARKI-MCPSTITCHHTMLHTMLTOFMX.png) | [Designer hierarchy](docs/result/VERSION.2.0.0/design-time/SS-STRUKTUR-HIERARKI-CREATEUI.png) | [Designer hierarchy](docs/result/VERSION.2.0.0/design-time/SS-STRUKTUR-HIERARKI-MAPPINGCREATEUI.png) | [Designer hierarchy](docs/result/VERSION.2.0.0/design-time/SS-STRUKTUR-HIERARKI-HTMLHTMLTOFMX.png) |
 
-### Time and cost notes
+### Recorded time
 
-The times above are notes from individual attempts. The author recorded these DeepSeek costs during peak hours:
+| Method | Initial UI | Cards + dummy data | Total |
+| --- | ---: | ---: | ---: |
+| 1. Google Stitch + HTML | 32m 49s | 6m 06s | **38m 55s** |
+| 2. Direct UI creation | 23m 25s | 2m 27s | **25m 52s** |
+| 3. Separate mapping | 8m 16s + 41m 54s | 5m 12s | **55m 22s** |
+| 4. Agent-generated HTML | 14m 40s | 8m 53s | **23m 33s** |
 
-| Attempt | Recorded cost |
-| --- | ---: |
-| DeepSeek V4.1 Flash High | **US$0.34** |
-| DeepSeek V4 Pro High | **US$1.74** |
+The total includes the follow-up needed to use the existing cards on the page and populate them. In Method 3, mapping took 8m 16s and implementation took 41m 54s; the mapping stage alone does not explain the longer duration. These times describe this experiment and exclude API integration.
 
-Exact GPT charges were not recorded. Based on Pro 5x usage percentages, the author estimated each Astra attempt at about **1%** and the other GPT attempts at **under 1%**. These figures are personal estimates. The attempts used different conditions and do not form a controlled speed, cost, or quality benchmark.
+### Author's conclusions
 
-## Author's takeaways
+- **Component hierarchy:** The four results were approximately **90% similar overall** in the author's assessment. This is an observational estimate, without a formal component-tree metric.
+- **Design colors:** Methods 1–3 followed the color rules in `DESIGN.md`. Method 4 departed from them; its HTML-generation prompt did not explicitly mention that file. An explicit instruction at the HTML stage is a suggested refinement for a future run.
+- **Method 1:** More polished visual grouping and more complete assets, while following the wireframe. Third fastest overall at 38m 55s.
+- **Method 2:** Followed the wireframe, with rougher visuals similar to Method 3. Second fastest at 25m 52s and required the least additional card work: 2m 27s.
+- **Method 3:** Closest to the wireframe layout in the author's judgment, but less satisfactory visually and the longest at 55m 22s. The separate map did not produce a visible gain in polish in this run.
+- **Method 4:** Visually satisfying despite its palette deviation. Fastest overall at 23m 33s, only 2m 19s ahead of direct UI creation.
 
-- **Lower cost, more manual work:** DeepSeek V4.1 Flash High is a starting point when you plan to refine the output yourself.
-- **Strong direct output:** DeepSeek V4 Pro High produced a very good result, but its peak hours run cost more and took longer. The author expects a lower cost outside peak hours; that expectation has not been measured here.
-- **Best visual result:** GPT-6 Astra Light followed by GPT-6 Sol High refinement produced the strongest result in the author's judgment.
-- **Best value:** GPT-6 Sol Medium already looked good in the initial run, and GPT-6 Sol High made it more polished. This is the author's preferred balance of result and cost. Based on Pro 5x usage, refinement appeared cheaper than repeating the conversion from scratch, although exact GPT charges were not tracked.
-- **Another good route:** GPT-5.6 Terra followed by GPT-6 Sol High refinement also produced a good result.
-- **Designer structure:** The resulting component hierarchies were relatively similar across attempts.
+### The shared gap: the cards existed, but the page still needed them
 
-Choose **GPT-6 Astra Light → GPT-6 Sol High** when visual quality matters most. Choose **GPT-6 Sol Medium → GPT-6 Sol High** for the author's preferred price to result balance. **DeepSeek V4 Pro High** is also worth considering outside peak hours if its cost falls as expected.
+All four initial results already included reusable cards. The page frames had not yet implemented and populated those cards, so the author used this additional prompt:
 
-These preferences reflect the concurrent runs documented here and may change with sequential retesting.
+> Add dummy data using the card you have already created.
+
+This is the English translation of the original follow-up. A more explicit version is:
+
+```text
+Add fictional dummy data using the cards already created. Implement them
+on the UI page: create list items, attach card instances, and populate
+them through the existing bindings. Load demo data once when the page
+is created. Preserve later data bindings, including empty results.
+```
+
+This is an opt-in demo step. For production screens, bind actual project data and keep loading, empty, and error states intact.
+
+## V1 background: NovaPOS
+
+Version 1 established the HTML → component map → native styles → FMX workflow with a NovaPOS dashboard generated by Google Stitch. The [source HTML](docs/ui-dashboard.html) and [browser reference](docs/result/VERSION.1.0.0/UI-HTML.png) remain available.
+
+This selected GPT-6 Sol Medium result shows Designer structure and the runtime before and after GPT-6 Sol High refinement:
+
+| Designer hierarchy | Initial runtime | After refinement |
+| --- | --- | --- |
+| <img src="docs/result/VERSION.1.0.0/image-design-time/SSDT-GPT-6%20Sol%20Medium.png" width="260" alt="V1 NovaPOS editable Designer hierarchy"> | <img src="docs/result/VERSION.1.0.0/image-run/before-enhance/SS-GPT-6%20Sol%20Medium.png" width="230" alt="V1 NovaPOS initial GPT-6 Sol Medium runtime"> | <img src="docs/result/VERSION.1.0.0/image-run/after-enhance/SSAF-GPT-6%20Sol%20Medium.png" width="230" alt="V1 NovaPOS after GPT-6 Sol High refinement"> |
+
+The main lessons carried into V2 were similar component hierarchies across attempts and the value of refining an existing UI. In the author's V1 assessment, **GPT-6 Astra Light → GPT-6 Sol High** gave the strongest visual result, while **GPT-6 Sol Medium → GPT-6 Sol High** offered the preferred balance of result and cost. DeepSeek's results used a Codex harness and remained pure DeepSeek, without GPT refinement.
+
+The original model attempts ran concurrently; later sequential retests of two models improved their results. Those observations belong to the V1 experiment and do not form a current model ranking or a comparison with V2 timings. Full model tables, recorded costs, and historical notes are preserved in the [V1 archive](docs/result/VERSION.1.0.0/README.md).
+
+## Native FMX scope and verification
+
+The target is pure native Delphi FMX, with fixed controls editable in the Designer. Skia is optional when the target project already uses it. Choose icons and image assets that fit your application's visual style and use the project's existing asset integration.
+
+Inspect component ownership, styles, assets, bindings, and navigation for each new screen. Build it, open it in the Designer, and inspect runtime behavior on the supported targets when the toolchain is available. Report source checks, build, Designer, runtime, and device checks separately. Existing screenshots show the recorded outputs; they do not establish new API integration, performance, or device acceptance. The runtime platform of the V2 captures was not specified.
+
+The Delphi demo project and generated implementation documents are local work excluded from the public package. The NovaPOS HTML preview loads external fonts and Tailwind; the English case-study website includes its assets locally and requires no build step. To preview or publish that website, see its [README](docs/result/VERSION.2.0.0/static-website/README.md).
 
 ## Repository layout
 
 ```text
-.agents/skills/          Three agent skills and their supporting files
-docs/ui-dashboard.html   HTML test input
-docs/result/             Browser, designer, desktop, and Android run captures
-PROMPTS.md               Copy-ready prompts
-README-ID.md             Indonesian documentation
-SOURCES.md               Documentation and third-party references
-LICENSE                  MIT license
-CONTRIBUTING.md          Contribution guidance
+.agents/skills/                 Six canonical agent skills and supporting files
+docs/ui-dashboard.html          V1 NovaPOS HTML input
+docs/ui-wireframe.html          V2 agent-generated healthcare HTML input
+docs/result/VERSION.1.0.0/      V1 README/prompt archives and available results
+docs/result/VERSION.2.0.0/      Wireframe, Designer/runtime captures, presentations
+  static-website/               English case study with local assets and downloads
+PROMPTS.md                      Copy-ready prompts for the V2 skill package
+README.md / README-ID.md        Current English and Indonesian documentation
+SOURCES.md                      Documentation and third-party references
+LICENSE / CONTRIBUTING.md       License and contribution guidance
 ```
-
-## Validation and scope
-
-The screenshots record particular designer, desktop, and Android runs. They show visual output from those attempts; they do not verify a new conversion, interaction behavior, a device matrix, or other Delphi versions. Each use of the skills still requires inspection of the target project, style integration, and whatever build, designer, and runtime checks its toolchain permits.
-
-The HTML preview loads Inter, Material Symbols, and Tailwind from external services; opening it locally needs network access for the intended appearance. The application project and generated conversion documents are not included in this repository.
 
 ## License and contributions
 
-This repository is available under the [MIT License](LICENSE). See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidance and [SOURCES.md](SOURCES.md) for documentation and third-party references.
+This repository uses the [MIT License](LICENSE). See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidance and [SOURCES.md](SOURCES.md) for technical references.

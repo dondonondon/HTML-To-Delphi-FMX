@@ -65,10 +65,11 @@ component plan. The map is a plan, not proof of a Delphi build or visual renderi
    item with an unconstrained `Align=Client` card still has no visible gap.
    For deliberately connected rows, map the divider instead of a card gap;
    distinguish that treatment from accidentally touching separate card surfaces.
-   Plan two or three representative dummy records through the card's binding path
-   with the same spacing as real records for conversion preview. Remove preview
-   records before real data loads. An actual empty result or request error must
-   keep its own state.
+   Plan preview fixtures only for a requested demo/designer preview or an isolated
+   validation harness. When used, two or three representative records follow the
+   real card binding path and spacing. Otherwise record preview as not used; do not
+   add a production preview mode. Clear requested application demo items before real
+   data loads. An actual empty result or request error must keep its own state.
 4. Choose native controls for each visible role: `TLabel` for text, `TEdit` or
    `TMemo` for input, `TCornerButton` for actions, standalone `TGlyph` with a
    project `TImageList` for display icons, `TImage` for photos/illustrations/logos,
@@ -104,7 +105,9 @@ component plan. The map is a plan, not proof of a Delphi build or visual renderi
    independent per-row action, map an item-owned sibling `TCornerButton` outside
    the card frame when it can preserve separate click routing; keep the frame
    descendants input-transparent. Record any unresolved interaction conflict;
-   do not drop the action or claim it works without verification. Separate visual
+   do not drop the action or claim it works without verification. Record creation in
+   the variable item's factory as the narrow runtime-action exception; fixed card
+   descendants remain design-time and input-transparent. Separate visual
    styling from application component hierarchy.
 
 ## Required Markdown content
@@ -128,7 +131,8 @@ component plan. The map is a plan, not proof of a Delphi build or visual renderi
 - For label/value detail rows, state whether rows come from a collection, the
   field set varies, or only fixed field values change;
   name the shared card class, its label/value binding, and any row-level action.
-- Dummy preview records, their variable states, and how real data replaces them.
+- Preview status: not used, requested demo/designer preview, or isolated harness;
+  when used, record fixtures, variable states and replacement by real data.
 - For each data list, the source/project spacing basis, visible card height,
   item height/inset, vertical and relevant horizontal gap, or deliberate divider;
   state how preview and real records share that geometry.
@@ -139,13 +143,15 @@ component plan. The map is a plan, not proof of a Delphi build or visual renderi
 - For each fixed grid, state the narrowest supported width, child anchoring/
   alignment, reserved icon/text space, and any reflow or trimming needed when
   a cell is too small.
+- Source visual baseline: rendered HTML/capture path, reference viewport and scale,
+  or not available. This records source evidence, not native-render validation.
 - Any extra layout level, responsive behavior, missing asset, unsupported CSS or
   interaction conflict that affects implementation.
 
 Check the map against the source before finishing: all visible controls and actions
 must have a destination; every independent card has an owner; each fixed group has
 its cells; each data list has a reusable card; no DOM-only wrapper remains without
-a job. Check that adjacent preview cards have mapped visible spacing or a deliberate
+a job. Check that adjacent cards have mapped visible spacing or a deliberate
 divider. Reject a flat content tree and unexplained nesting before implementation.
 Do not invent API fields or claim runtime validation from a static mapping. Keep
 the document concise enough to implement and review.

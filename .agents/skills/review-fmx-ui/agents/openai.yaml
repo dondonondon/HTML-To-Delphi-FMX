@@ -1,0 +1,6 @@
+interface:
+  display_name: "Review Delphi FMX UI"
+  short_description: "Review and refine existing FMX without restructuring"
+  default_prompt: "Use $review-fmx-ui to review this existing FMX screen against its reference and report issues without editing files or changing its hierarchy."
+policy:
+  allow_implicit_invocation: true
